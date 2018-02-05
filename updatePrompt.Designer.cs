@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.updateMainPanel = new System.Windows.Forms.Panel();
+            this.updateBar = new System.Windows.Forms.ProgressBar();
             this.updaterLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.updateLogo = new System.Windows.Forms.PictureBox();
-            this.updateBar = new System.Windows.Forms.ProgressBar();
+            this.updateWorker = new System.ComponentModel.BackgroundWorker();
             this.updateMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateLogo)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +49,16 @@
             this.updateMainPanel.Name = "updateMainPanel";
             this.updateMainPanel.Size = new System.Drawing.Size(597, 122);
             this.updateMainPanel.TabIndex = 1;
+            // 
+            // updateBar
+            // 
+            this.updateBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.updateBar.ForeColor = System.Drawing.Color.Green;
+            this.updateBar.Location = new System.Drawing.Point(0, 99);
+            this.updateBar.Name = "updateBar";
+            this.updateBar.Size = new System.Drawing.Size(597, 23);
+            this.updateBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.updateBar.TabIndex = 99;
             // 
             // updaterLabel
             // 
@@ -86,15 +97,10 @@
             this.updateLogo.TabIndex = 0;
             this.updateLogo.TabStop = false;
             // 
-            // updateBar
+            // updateWorker
             // 
-            this.updateBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.updateBar.ForeColor = System.Drawing.Color.Green;
-            this.updateBar.Location = new System.Drawing.Point(0, 99);
-            this.updateBar.Name = "updateBar";
-            this.updateBar.Size = new System.Drawing.Size(597, 23);
-            this.updateBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.updateBar.TabIndex = 99;
+            this.updateWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateWorker_DoWork);
+            this.updateWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.updateWorker_RunWorkerCompleted);
             // 
             // updatePrompt
             // 
@@ -121,5 +127,6 @@
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Label updaterLabel;
         private System.Windows.Forms.ProgressBar updateBar;
+        private System.ComponentModel.BackgroundWorker updateWorker;
     }
 }

@@ -55,20 +55,6 @@
             this.myAddressText = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.walletTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.sendTrtlButton = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.recipientAddressText = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.label27 = new System.Windows.Forms.Label();
-            this.mixinNumeric = new System.Windows.Forms.NumericUpDown();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -76,6 +62,27 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.sendTrtlButton = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.recipientAddressText = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.sendAmountText = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.feeComboBox = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.mixinNumeric = new System.Windows.Forms.NumericUpDown();
+            this.FeeExplainLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.paymentIdText = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.LogTextbox = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -89,17 +96,29 @@
             this.label4 = new System.Windows.Forms.Label();
             this.sendRPCButton = new System.Windows.Forms.Button();
             this.rpcTextbox = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.backupSubmitbutton = new System.Windows.Forms.Label();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.backupPasswordText = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.spendKeyText = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.viewKeyText = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.backupButton = new System.Windows.Forms.Label();
             this.logButton = new System.Windows.Forms.Label();
             this.rpcButton = new System.Windows.Forms.Label();
             this.homeButton = new System.Windows.Forms.Label();
             this.sendButton = new System.Windows.Forms.Label();
             this.resyncer = new System.ComponentModel.BackgroundWorker();
-            this.feeComboBox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.FeeExplainLabel = new System.Windows.Forms.Label();
-            this.sendAmountText = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
+            this.saverWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -109,21 +128,29 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.walletTabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sendAmountText)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mixinNumeric)).BeginInit();
-            this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tableLayoutPanel16.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sendAmountText)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -501,6 +528,7 @@
             this.walletTabControl.Controls.Add(this.tabPage2);
             this.walletTabControl.Controls.Add(this.tabPage3);
             this.walletTabControl.Controls.Add(this.tabPage4);
+            this.walletTabControl.Controls.Add(this.tabPage5);
             this.walletTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.walletTabControl.ItemSize = new System.Drawing.Size(0, 2);
             this.walletTabControl.Location = new System.Drawing.Point(0, 0);
@@ -512,6 +540,64 @@
             this.walletTabControl.Size = new System.Drawing.Size(1022, 207);
             this.walletTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.walletTabControl.TabIndex = 3;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.tabPage1.Controls.Add(this.txList);
+            this.tabPage1.Location = new System.Drawing.Point(4, 6);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1014, 197);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            // 
+            // txList
+            // 
+            this.txList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.txList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txList.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txList.FullRowSelect = true;
+            this.txList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.txList.Location = new System.Drawing.Point(0, 0);
+            this.txList.MultiSelect = false;
+            this.txList.Name = "txList";
+            this.txList.Size = new System.Drawing.Size(1014, 197);
+            this.txList.TabIndex = 4;
+            this.txList.UseCompatibleStateImageBehavior = false;
+            this.txList.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Confirmed";
+            this.columnHeader1.Width = 120;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "   ⇚ ⇛";
+            this.columnHeader2.Width = 90;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "  Amount";
+            this.columnHeader3.Width = 108;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "  Date";
+            this.columnHeader4.Width = 240;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "  Address";
+            this.columnHeader5.Width = 515;
             // 
             // tabPage2
             // 
@@ -530,6 +616,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.65286F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.91519F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33556F));
+            this.tableLayoutPanel7.Controls.Add(this.label8, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.sendTrtlButton, 2, 3);
             this.tableLayoutPanel7.Controls.Add(this.label22, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label23, 0, 1);
@@ -538,9 +625,8 @@
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel9, 1, 2);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel10, 2, 1);
-            this.tableLayoutPanel7.Controls.Add(this.panel4, 0, 3);
-            this.tableLayoutPanel7.Controls.Add(this.panel5, 1, 3);
             this.tableLayoutPanel7.Controls.Add(this.FeeExplainLabel, 2, 2);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel15, 1, 3);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -552,6 +638,19 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1014, 197);
             this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
+            this.label8.Location = new System.Drawing.Point(3, 159);
+            this.label8.Margin = new System.Windows.Forms.Padding(3, 12, 3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(173, 38);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Payment ID:";
             // 
             // sendTrtlButton
             // 
@@ -639,6 +738,38 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(490, 43);
             this.tableLayoutPanel8.TabIndex = 5;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(395, 10);
+            this.label7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 33);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "TRTL";
+            // 
+            // sendAmountText
+            // 
+            this.sendAmountText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.sendAmountText.DecimalPlaces = 2;
+            this.sendAmountText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendAmountText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAmountText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.sendAmountText.Location = new System.Drawing.Point(10, 3);
+            this.sendAmountText.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.sendAmountText.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
+            this.sendAmountText.Name = "sendAmountText";
+            this.sendAmountText.Size = new System.Drawing.Size(372, 30);
+            this.sendAmountText.TabIndex = 6;
+            this.sendAmountText.ValueChanged += new System.EventHandler(this.sendAmountText_ValueChanged);
+            // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 2;
@@ -654,6 +785,38 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(490, 43);
             this.tableLayoutPanel9.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(395, 10);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 33);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "TRTL";
+            // 
+            // feeComboBox
+            // 
+            this.feeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.feeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.feeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.feeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.feeComboBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.feeComboBox.ForeColor = System.Drawing.Color.White;
+            this.feeComboBox.FormattingEnabled = true;
+            this.feeComboBox.Items.AddRange(new object[] {
+            ".1% (Tiny)",
+            ".5% (Low)",
+            "1% (Medium)",
+            "3% (High)"});
+            this.feeComboBox.Location = new System.Drawing.Point(3, 3);
+            this.feeComboBox.Name = "feeComboBox";
+            this.feeComboBox.Size = new System.Drawing.Size(386, 36);
+            this.feeComboBox.TabIndex = 0;
             // 
             // tableLayoutPanel10
             // 
@@ -701,79 +864,60 @@
             0,
             0});
             // 
-            // panel4
+            // FeeExplainLabel
             // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 150);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(173, 44);
-            this.panel4.TabIndex = 9;
+            this.FeeExplainLabel.AutoSize = true;
+            this.FeeExplainLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FeeExplainLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FeeExplainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
+            this.FeeExplainLabel.Location = new System.Drawing.Point(678, 98);
+            this.FeeExplainLabel.Name = "FeeExplainLabel";
+            this.FeeExplainLabel.Size = new System.Drawing.Size(333, 49);
+            this.FeeExplainLabel.TabIndex = 12;
+            this.FeeExplainLabel.Text = "* Default fee && Mixins based off sent amount.\r\n* You may set a higher Mixin if n" +
+    "eeded.";
+            this.FeeExplainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel5
+            // tableLayoutPanel15
             // 
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(182, 150);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(490, 44);
-            this.panel5.TabIndex = 10;
+            this.tableLayoutPanel15.ColumnCount = 2;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel15.Controls.Add(this.label9, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.paymentIdText, 0, 0);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(182, 150);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 1;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(490, 44);
+            this.tableLayoutPanel15.TabIndex = 13;
             // 
-            // tabPage1
+            // label9
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.tabPage1.Controls.Add(this.txList);
-            this.tabPage1.Location = new System.Drawing.Point(4, 6);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1014, 197);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(395, 10);
+            this.label9.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(92, 34);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "(Optional)";
             // 
-            // txList
+            // paymentIdText
             // 
-            this.txList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.txList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txList.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txList.FullRowSelect = true;
-            this.txList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.txList.Location = new System.Drawing.Point(0, 0);
-            this.txList.MultiSelect = false;
-            this.txList.Name = "txList";
-            this.txList.Size = new System.Drawing.Size(1014, 197);
-            this.txList.TabIndex = 4;
-            this.txList.UseCompatibleStateImageBehavior = false;
-            this.txList.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Confirmed";
-            this.columnHeader1.Width = 120;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "   ⇚ ⇛";
-            this.columnHeader2.Width = 90;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "  Amount";
-            this.columnHeader3.Width = 108;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "  Date";
-            this.columnHeader4.Width = 240;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "  Address";
-            this.columnHeader5.Width = 515;
+            this.paymentIdText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.paymentIdText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.paymentIdText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paymentIdText.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paymentIdText.ForeColor = System.Drawing.Color.White;
+            this.paymentIdText.Location = new System.Drawing.Point(3, 7);
+            this.paymentIdText.Margin = new System.Windows.Forms.Padding(3, 7, 10, 3);
+            this.paymentIdText.Name = "paymentIdText";
+            this.paymentIdText.Size = new System.Drawing.Size(379, 34);
+            this.paymentIdText.TabIndex = 6;
             // 
             // tabPage3
             // 
@@ -953,6 +1097,213 @@
             this.rpcTextbox.TabIndex = 1;
             this.rpcTextbox.Text = resources.GetString("rpcTextbox.Text");
             // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.tabPage5.Controls.Add(this.tableLayoutPanel16);
+            this.tabPage5.Location = new System.Drawing.Point(4, 6);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1014, 197);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "tabPage5";
+            // 
+            // tableLayoutPanel16
+            // 
+            this.tableLayoutPanel16.ColumnCount = 1;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel16.Controls.Add(this.tableLayoutPanel17, 0, 0);
+            this.tableLayoutPanel16.Controls.Add(this.tableLayoutPanel18, 0, 1);
+            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 2;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(1014, 197);
+            this.tableLayoutPanel16.TabIndex = 0;
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 3;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel17.Controls.Add(this.label15, 2, 0);
+            this.tableLayoutPanel17.Controls.Add(this.backupSubmitbutton, 1, 0);
+            this.tableLayoutPanel17.Controls.Add(this.tableLayoutPanel21, 0, 0);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 1;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(1008, 53);
+            this.tableLayoutPanel17.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(708, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(297, 53);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "* Submit your wallet password to unlock and view your keys";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // backupSubmitbutton
+            // 
+            this.backupSubmitbutton.AutoSize = true;
+            this.backupSubmitbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
+            this.backupSubmitbutton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backupSubmitbutton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backupSubmitbutton.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backupSubmitbutton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.backupSubmitbutton.Location = new System.Drawing.Point(509, 5);
+            this.backupSubmitbutton.Margin = new System.Windows.Forms.Padding(5);
+            this.backupSubmitbutton.Name = "backupSubmitbutton";
+            this.backupSubmitbutton.Size = new System.Drawing.Size(191, 43);
+            this.backupSubmitbutton.TabIndex = 2;
+            this.backupSubmitbutton.Text = "Unlock Keys";
+            this.backupSubmitbutton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.backupSubmitbutton.Click += new System.EventHandler(this.backupSubmitbutton_Click);
+            // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnCount = 2;
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel21.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.backupPasswordText, 1, 0);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 1;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(498, 47);
+            this.tableLayoutPanel21.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(143, 47);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Wallet Password:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // backupPasswordText
+            // 
+            this.backupPasswordText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.backupPasswordText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backupPasswordText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backupPasswordText.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backupPasswordText.Location = new System.Drawing.Point(152, 5);
+            this.backupPasswordText.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.backupPasswordText.Name = "backupPasswordText";
+            this.backupPasswordText.Size = new System.Drawing.Size(343, 38);
+            this.backupPasswordText.TabIndex = 12;
+            this.backupPasswordText.UseSystemPasswordChar = true;
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 2;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel20, 1, 0);
+            this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel19, 0, 0);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 62);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 1;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(1008, 132);
+            this.tableLayoutPanel18.TabIndex = 1;
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 1;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel20.Controls.Add(this.spendKeyText, 0, 1);
+            this.tableLayoutPanel20.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(507, 3);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.RowCount = 2;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(498, 126);
+            this.tableLayoutPanel20.TabIndex = 1;
+            // 
+            // spendKeyText
+            // 
+            this.spendKeyText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.spendKeyText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spendKeyText.Location = new System.Drawing.Point(3, 28);
+            this.spendKeyText.Multiline = true;
+            this.spendKeyText.Name = "spendKeyText";
+            this.spendKeyText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.spendKeyText.Size = new System.Drawing.Size(492, 95);
+            this.spendKeyText.TabIndex = 5;
+            // 
+            // label11
+            // 
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(492, 25);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Spend Key:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 1;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel19.Controls.Add(this.label10, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.viewKeyText, 0, 1);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 2;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(498, 126);
+            this.tableLayoutPanel19.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
+            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(492, 25);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "View Key:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // viewKeyText
+            // 
+            this.viewKeyText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.viewKeyText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewKeyText.Location = new System.Drawing.Point(3, 28);
+            this.viewKeyText.Multiline = true;
+            this.viewKeyText.Name = "viewKeyText";
+            this.viewKeyText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.viewKeyText.Size = new System.Drawing.Size(492, 95);
+            this.viewKeyText.TabIndex = 4;
+            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 5;
@@ -961,6 +1312,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.backupButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.logButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.rpcButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.homeButton, 0, 0);
@@ -977,6 +1329,23 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1022, 51);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
+            // backupButton
+            // 
+            this.backupButton.AutoSize = true;
+            this.backupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.backupButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backupButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backupButton.Font = new System.Drawing.Font("Segoe UI Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backupButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.backupButton.Location = new System.Drawing.Point(612, 0);
+            this.backupButton.Margin = new System.Windows.Forms.Padding(0);
+            this.backupButton.Name = "backupButton";
+            this.backupButton.Size = new System.Drawing.Size(204, 51);
+            this.backupButton.TabIndex = 4;
+            this.backupButton.Text = "BACKUP KEYS";
+            this.backupButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.backupButton.Click += new System.EventHandler(this.backupButton_Click);
+            // 
             // logButton
             // 
             this.logButton.AutoSize = true;
@@ -985,10 +1354,10 @@
             this.logButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logButton.Font = new System.Drawing.Font("Segoe UI Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.logButton.Location = new System.Drawing.Point(408, 0);
+            this.logButton.Location = new System.Drawing.Point(816, 0);
             this.logButton.Margin = new System.Windows.Forms.Padding(0);
             this.logButton.Name = "logButton";
-            this.logButton.Size = new System.Drawing.Size(204, 51);
+            this.logButton.Size = new System.Drawing.Size(206, 51);
             this.logButton.TabIndex = 2;
             this.logButton.Text = "LOGS";
             this.logButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1004,12 +1373,12 @@
             this.rpcButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rpcButton.Font = new System.Drawing.Font("Segoe UI Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rpcButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rpcButton.Location = new System.Drawing.Point(612, 0);
+            this.rpcButton.Location = new System.Drawing.Point(408, 0);
             this.rpcButton.Margin = new System.Windows.Forms.Padding(0);
             this.rpcButton.Name = "rpcButton";
             this.rpcButton.Size = new System.Drawing.Size(204, 51);
             this.rpcButton.TabIndex = 3;
-            this.rpcButton.Text = "RPC Console";
+            this.rpcButton.Text = "RPC CONSOLE";
             this.rpcButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rpcButton.Click += new System.EventHandler(this.rpcButton_Click);
             this.rpcButton.MouseEnter += new System.EventHandler(this.rpcButton_MouseEnter);
@@ -1057,83 +1426,10 @@
             // 
             this.resyncer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.resyncer_DoWork);
             // 
-            // feeComboBox
+            // saverWorker
             // 
-            this.feeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.feeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.feeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.feeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.feeComboBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feeComboBox.ForeColor = System.Drawing.Color.White;
-            this.feeComboBox.FormattingEnabled = true;
-            this.feeComboBox.Items.AddRange(new object[] {
-            ".1% (Tiny)",
-            ".5% (Low)",
-            "1% (Medium)",
-            "3% (High)"});
-            this.feeComboBox.Location = new System.Drawing.Point(3, 3);
-            this.feeComboBox.Name = "feeComboBox";
-            this.feeComboBox.Size = new System.Drawing.Size(386, 36);
-            this.feeComboBox.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(395, 10);
-            this.label6.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 33);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "TRTL";
-            // 
-            // FeeExplainLabel
-            // 
-            this.FeeExplainLabel.AutoSize = true;
-            this.FeeExplainLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FeeExplainLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FeeExplainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
-            this.FeeExplainLabel.Location = new System.Drawing.Point(678, 98);
-            this.FeeExplainLabel.Name = "FeeExplainLabel";
-            this.FeeExplainLabel.Size = new System.Drawing.Size(333, 49);
-            this.FeeExplainLabel.TabIndex = 12;
-            this.FeeExplainLabel.Text = "* Default fee && Mixins based off sent amount.\r\n* You may set a higher Mixin if n" +
-    "eeded.";
-            this.FeeExplainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // sendAmountText
-            // 
-            this.sendAmountText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.sendAmountText.DecimalPlaces = 2;
-            this.sendAmountText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendAmountText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendAmountText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.sendAmountText.Location = new System.Drawing.Point(10, 3);
-            this.sendAmountText.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.sendAmountText.Maximum = new decimal(new int[] {
-            -727379968,
-            232,
-            0,
-            0});
-            this.sendAmountText.Name = "sendAmountText";
-            this.sendAmountText.Size = new System.Drawing.Size(372, 30);
-            this.sendAmountText.TabIndex = 6;
-            this.sendAmountText.ValueChanged += new System.EventHandler(this.sendAmountText_ValueChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(395, 10);
-            this.label7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 33);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "TRTL";
+            this.saverWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.saverWorker_DoWork);
+            this.saverWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.saverWorker_RunWorkerCompleted);
             // 
             // wallet
             // 
@@ -1160,17 +1456,20 @@
             this.tableLayoutPanel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.walletTabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sendAmountText)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mixinNumeric)).EndInit();
-            this.tabPage1.ResumeLayout(false);
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -1181,9 +1480,19 @@
             this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tableLayoutPanel16.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.tableLayoutPanel17.PerformLayout();
+            this.tableLayoutPanel21.ResumeLayout(false);
+            this.tableLayoutPanel21.PerformLayout();
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel20.ResumeLayout(false);
+            this.tableLayoutPanel20.PerformLayout();
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sendAmountText)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1238,8 +1547,6 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.NumericUpDown mixinNumeric;
         private System.Windows.Forms.Label sendTrtlButton;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label statLabel;
         private System.Windows.Forms.Label updateLabel;
@@ -1265,5 +1572,26 @@
         private System.Windows.Forms.Label FeeExplainLabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown sendAmountText;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox paymentIdText;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label backupButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox backupPasswordText;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.TextBox spendKeyText;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox viewKeyText;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label backupSubmitbutton;
+        private System.ComponentModel.BackgroundWorker saverWorker;
     }
 }

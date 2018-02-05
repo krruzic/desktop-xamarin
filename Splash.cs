@@ -88,7 +88,7 @@ namespace TurtleWallet
                             continue;
                         }
                         this.StatusLabel.BeginInvoke((MethodInvoker)delegate () { this.StatusLabel.Text = "Syncing... [" + block_count.ToString() + " / " + known_block_count.ToString() + "]"; });
-                        if(known_block_count > 0 && (block_count >= known_block_count))
+                        if(known_block_count > 0 && (block_count >= known_block_count - 1))
                         {
                             this.StatusLabel.BeginInvoke((MethodInvoker)delegate () { this.StatusLabel.Text = "Wallet is synced, opening..."; });
                             e.Result = connReturn.Item3;

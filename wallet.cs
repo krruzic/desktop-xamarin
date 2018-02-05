@@ -22,6 +22,7 @@ namespace TurtleWallet
         public static int staticFee = 10;
         public static Label _selectedTab;
         public static List<string> cachedTrx = new List<string>();
+        public static List<ListViewItem> firstRunTrx = new List<ListViewItem>();
         public static Process runningDaemon;
         public static WindowLogger windowLogger;
         public static int globalRefreshCount = 0;
@@ -256,6 +257,7 @@ namespace TurtleWallet
             }
             if (blocks == null)
                 return;
+            bool _trxFound = false;
             foreach(var block in blocks.Reverse())
             {
                 var bblock = (Newtonsoft.Json.Linq.JObject)block;
@@ -322,23 +324,35 @@ namespace TurtleWallet
 
                         System.Windows.Forms.ListViewItem trxItem = new System.Windows.Forms.ListViewItem(subitems.ToArray(), -1);
                         trxItem.UseItemStyleForSubItems = false;
-                        txList.BeginInvoke((MethodInvoker)delegate ()
-                        {
-                            if (globalRefreshCount > 1)
-                                txList.Items.Insert(0, trxItem);
-                            else
-                                txList.Items.Add(trxItem);
-                            foreach (ColumnHeader column in txList.Columns)
+                        if (globalRefreshCount > 1)
+                            txList.BeginInvoke((MethodInvoker)delegate ()
                             {
-                                column.Width = -2;
-                            }
-                        });
+                                txList.Items.Insert(0, trxItem);
+                            });
+                        else
+                            firstRunTrx.Add(trxItem);
+                                //txList.Items.Add(trxItem);
                         cachedTrx.Add(transaction["transactionHash"].ToString());
+                        _trxFound = true;
                         windowLogger.Log(LogTextbox, "Found transaction " + transaction["transactionHash"].ToString() + ". Added to list ...");
                     }
                 }
             }
 
+            if (globalRefreshCount == 1)
+            {
+                txList.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    txList.Items.AddRange(firstRunTrx.ToArray());
+                });
+            }
+            if (_trxFound)
+            {
+                foreach (ColumnHeader column in txList.Columns)
+                {
+                    column.Width = -2;
+                }
+            }
             string titleUpdate = "TurtleCoin Wallet - Network Sync [" + status["blockCount"].ToString() + " / " + status["knownBlockCount"].ToString() + "] | Peers: " + status["peerCount"].ToString() + " | Updated: " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss tt");
             this.BeginInvoke((MethodInvoker)delegate ()
             {
@@ -467,6 +481,9 @@ namespace TurtleWallet
             var currentButton = (Label)sender;
             if (_selectedTab != currentButton)
             {
+                viewKeyText.Text = "";
+                spendKeyText.Text = "";
+                backupPasswordText.Text = "";
                 var backcolor = Color.FromArgb(52, 52, 52);
                 var forcolor = Color.FromArgb(224, 224, 224);
                 _selectedTab.BackColor = backcolor;
@@ -487,6 +504,9 @@ namespace TurtleWallet
             var currentButton = (Label)sender;
             if (_selectedTab != currentButton)
             {
+                viewKeyText.Text = "";
+                spendKeyText.Text = "";
+                backupPasswordText.Text = "";
                 var backcolor = Color.FromArgb(52, 52, 52);
                 var forcolor = Color.FromArgb(224, 224, 224);
                 _selectedTab.BackColor = backcolor;
@@ -542,12 +562,16 @@ namespace TurtleWallet
 
         private void wallet_FormClosing(object sender, FormClosingEventArgs e)
         {
-            runningDaemon.Kill();
+            updateLabel.Text = "Saving wallet, Please wait..";
+            saverWorker.RunWorkerAsync();
+            MessageBox.Show("Saving Wallet, Please wait...", "TurtleCoin Wallet");
+            e.Cancel = true;
         }
 
         private void sendTrtlButton_Click(object sender, EventArgs e)
         {
             string sendAddr = recipientAddressText.Text;
+            string paymentID = paymentIdText.Text;
             int amount = 0;
             int fee = 10;
 
@@ -618,7 +642,8 @@ namespace TurtleWallet
             {
                 { "anonymity", mixins },
                 { "fee", fee },
-                { "transfers", transfers }
+                { "transfers", transfers },
+                { "paymentId", paymentID}
             };
 
             try
@@ -671,6 +696,9 @@ namespace TurtleWallet
             var currentButton = (Label)sender;
             if (_selectedTab != currentButton)
             {
+                viewKeyText.Text = "";
+                spendKeyText.Text = "";
+                backupPasswordText.Text = "";
                 var backcolor = Color.FromArgb(52, 52, 52);
                 var forcolor = Color.FromArgb(224, 224, 224);
                 _selectedTab.BackColor = backcolor;
@@ -691,6 +719,9 @@ namespace TurtleWallet
             var currentButton = (Label)sender;
             if (_selectedTab != currentButton)
             {
+                viewKeyText.Text = "";
+                spendKeyText.Text = "";
+                backupPasswordText.Text = "";
                 var backcolor = Color.FromArgb(52, 52, 52);
                 var forcolor = Color.FromArgb(224, 224, 224);
                 _selectedTab.BackColor = backcolor;
@@ -756,6 +787,89 @@ namespace TurtleWallet
         public static int Percent(int number, double percent)
         {
             return (int)Math.Round(((double)number * percent) / 100);
+        }
+
+        private void backupSubmitbutton_Click(object sender, EventArgs e)
+        {
+            if(backupPasswordText.Text == "")
+            {
+                MessageBox.Show("Please enter a valid password.", "TurtleCoin Wallet");
+                return;
+            }
+            if(backupPasswordText.Text != walletPassword)
+            {
+                MessageBox.Show("Incorrect password!", "TurtleCoin Wallet");
+                return;
+            }
+
+            var viewresp = ConnectionManager.request("getViewKey", new Dictionary<string, object> { });
+            if (viewresp.Item1 == false)
+            {
+                MessageBox.Show("Error occured on getViewKey:" + Environment.NewLine + viewresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                windowLogger.Log(LogTextbox, "Error occured on getViewKey:" + Environment.NewLine + viewresp.Item2);
+                return;
+            }
+            string viewkey = viewresp.Item3["viewSecretKey"].ToString();
+            viewKeyText.Text = viewkey;
+
+            var args = new Dictionary<string, object>()
+            {
+                { "address", myAddressText.Text }
+            };
+            var spendresp = ConnectionManager.request("getSpendKeys", args);
+            if (spendresp.Item1 == false)
+            {
+                MessageBox.Show("Error occured on getSpendKeys:" + Environment.NewLine + spendresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                windowLogger.Log(LogTextbox, "Error occured on getSpendKeys:" + Environment.NewLine + spendresp.Item2);
+                return;
+            }
+            string spendkey = spendresp.Item3["spendSecretKey"].ToString();
+            string spendkeypub = spendresp.Item3["spendPublicKey"].ToString();
+            spendKeyText.Text = "SpendKeyPublic:" + Environment.NewLine + spendkeypub + Environment.NewLine + Environment.NewLine + "SpendKeySecret: " + Environment.NewLine + spendkey;
+            MessageBox.Show("Wallet keys successfully unlocked!", "TurtleCoin Wallet");
+        }
+
+        private void backupButton_Click(object sender, EventArgs e)
+        {
+            var currentButton = (Label)sender;
+            if (_selectedTab != currentButton)
+            {
+                viewKeyText.Text = "";
+                spendKeyText.Text = "";
+                backupPasswordText.Text = "";
+                var backcolor = Color.FromArgb(52, 52, 52);
+                var forcolor = Color.FromArgb(224, 224, 224);
+                _selectedTab.BackColor = backcolor;
+                _selectedTab.ForeColor = forcolor;
+
+                walletTabControl.SelectedIndex = 4;
+                _selectedTab = currentButton;
+
+                backcolor = Color.FromArgb(82, 82, 82);
+                forcolor = Color.FromArgb(39, 170, 107);
+                _selectedTab.BackColor = backcolor;
+                _selectedTab.ForeColor = forcolor;
+            }
+        }
+
+        private void saverWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                var saveresp = ConnectionManager.request("save", new Dictionary<string, object> { });
+                if (saveresp.Item1 == false)
+                {
+                    MessageBox.Show("Error occured trying to save the wallet state:" + Environment.NewLine + saveresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            
+        }
+
+        private void saverWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            runningDaemon.Kill();
+            Environment.Exit(0);
         }
     }
 }

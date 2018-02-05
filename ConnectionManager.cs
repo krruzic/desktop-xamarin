@@ -13,12 +13,14 @@ namespace TurtleWallet
     class ConnectionManager
     {
         public static int rpcID = 0;
+        public static string _rpcRand = new Random().Next(10000000, 999999999).ToString();
         private static JObject _request(string method, Dictionary<string,object> args)
         {
             var builtURL = Properties.Settings.Default.RPCprotocol + "://" + Properties.Settings.Default.RPCdestination + ":" + Properties.Settings.Default.RPCport + Properties.Settings.Default.RPCtrailing;
             var payload = new Dictionary<string, object>()
             {
                 { "jsonrpc", "2.0" },
+                { "password", _rpcRand},
                 { "method", method },
                 { "params", args },
                 { "id", rpcID.ToString() }
@@ -45,6 +47,7 @@ namespace TurtleWallet
             var payload = new Dictionary<string, object>()
             {
                 { "jsonrpc", "2.0" },
+                { "password", _rpcRand},
                 { "method", method },
                 { "params", args_dict },
                 { "id", rpcID.ToString() }
@@ -98,7 +101,7 @@ namespace TurtleWallet
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.FileName = walletdexe;
-                p.StartInfo.Arguments = "-w \"" + _wallet + "\" -p " + _pass + " --local";
+                p.StartInfo.Arguments = "-w \"" + _wallet + "\" -p " + _pass + " --local --rpc-password " + _rpcRand;
                 p.Start();
                 System.Threading.Thread.Sleep(1500);
                 if (p.HasExited)
