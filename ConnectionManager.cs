@@ -75,11 +75,11 @@ namespace TurtleWallet
             }
         }
 
-        public static Tuple<bool,string, Process> startDaemon(string _wallet, string _pass)
+        public static Tuple<bool,string, Process> startDaemon(string wallet, string pass)
         {
             var curDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             var walletdexe = System.IO.Path.Combine(curDir, "walletd.exe");
-            if (!System.IO.File.Exists(_wallet))
+            if (!System.IO.File.Exists(wallet))
             {
                 return Tuple.Create<bool,string,Process>(false, "Wallet file cannot be found! Must exit!", null);
             }
@@ -101,7 +101,7 @@ namespace TurtleWallet
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.FileName = walletdexe;
-                p.StartInfo.Arguments = "-w \"" + _wallet + "\" -p " + _pass + " --local --rpc-password " + _rpcRand;
+                p.StartInfo.Arguments = "-w \"" + wallet + "\" -p \"" + pass + "\" --local --rpc-password " + _rpcRand;
                 p.Start();
                 System.Threading.Thread.Sleep(1500);
                 if (p.HasExited)
