@@ -12,13 +12,13 @@ namespace TurtleWallet
 {
     public partial class SelectionPrompt : Form
     {
-        public string walletPath
+        public string WalletPath
         {
             get;
             set;
         }
 
-        public string walletPassword
+        public string WalletPassword
         {
             get;
             set;
@@ -38,9 +38,14 @@ namespace TurtleWallet
         public SelectionPrompt()
         {
             InitializeComponent();
+            //if(IsRunningOnMono())
+            //{
+            //    this.Width = this.Width + 150;
+            //    this.Height = this.Height + 150;
+            //}
         }
 
-        private void createWalletButton_MouseEnter(object sender, EventArgs e)
+        private void CreateWalletButton_MouseEnter(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(44, 44, 44);
             var forcolor = Color.FromArgb(39, 170, 107);
@@ -49,7 +54,7 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void createWalletButton_MouseLeave(object sender, EventArgs e)
+        private void CreateWalletButton_MouseLeave(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(52, 52, 52);
             var forcolor = Color.FromArgb(224, 224, 224);
@@ -58,7 +63,7 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void selectWalletButton_MouseEnter(object sender, EventArgs e)
+        private void SelectWalletButton_MouseEnter(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(44, 44, 44);
             var forcolor = Color.FromArgb(39, 170, 107);
@@ -67,7 +72,7 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void selectWalletButton_MouseLeave(object sender, EventArgs e)
+        private void SelectWalletButton_MouseLeave(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(52, 52, 52);
             var forcolor = Color.FromArgb(224, 224, 224);
@@ -76,7 +81,7 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to close Turtle Wallet?", "Turtle Wallet", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -86,29 +91,29 @@ namespace TurtleWallet
             }
         }
 
-        private void exitButton_MouseEnter(object sender, EventArgs e)
+        private void ExitButton_MouseEnter(object sender, EventArgs e)
         {
             var forcolor = Color.FromArgb(39, 170, 107);
             var currentButton = (Label)sender;
             currentButton.ForeColor = forcolor;
         }
 
-        private void exitButton_MouseLeave(object sender, EventArgs e)
+        private void ExitButton_MouseLeave(object sender, EventArgs e)
         {
             var forcolor = Color.White;
             var currentButton = (Label)sender;
             currentButton.ForeColor = forcolor;
         }
 
-        private void createWalletButton_Click(object sender, EventArgs e)
+        private void CreateWalletButton_Click(object sender, EventArgs e)
         {
             CreateWalletPrompt CWP = new CreateWalletPrompt();
             this.Hide();
             var CWPreturn = CWP.ShowDialog();
             if(CWPreturn == DialogResult.OK)
             {
-                walletPath = CWP.walletPath;
-                walletPassword = CWP.walletPassword;
+                WalletPath = CWP.WalletPath;
+                WalletPassword = CWP.WalletPassword;
                 this.DialogResult = DialogResult.OK;
                 CWP.Dispose();
                 this.Close();
@@ -116,21 +121,22 @@ namespace TurtleWallet
             this.Show();
         }
 
-        private void selectWalletButton_Click(object sender, EventArgs e)
+        private void SelectWalletButton_Click(object sender, EventArgs e)
         {
             var curDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            OpenFileDialog findWalletDialog = new OpenFileDialog();
-
-            findWalletDialog.InitialDirectory = curDir;
-            findWalletDialog.Filter = "wallet files (*.wallet)|*.wallet|All files (*.*)|*.*";
-            findWalletDialog.FilterIndex = 2;
-            findWalletDialog.RestoreDirectory = true;
+            OpenFileDialog findWalletDialog = new OpenFileDialog
+            {
+                InitialDirectory = curDir,
+                Filter = "wallet files (*.wallet)|*.wallet|All files (*.*)|*.*",
+                FilterIndex = 2,
+                RestoreDirectory = true
+            };
 
             if (findWalletDialog.ShowDialog() == DialogResult.OK)
             {
                 if(System.IO.File.Exists(findWalletDialog.FileName))
                 {
-                    walletPath = findWalletDialog.FileName;
+                    WalletPath = findWalletDialog.FileName;
                     var pPrompt = new passwordPrompt();
                     this.Hide();
                     var pResult = pPrompt.ShowDialog();
@@ -143,13 +149,18 @@ namespace TurtleWallet
                     }
                     else
                     {
-                        walletPassword = pPrompt.walletPassword;
+                        WalletPassword = pPrompt.WalletPassword;
                         pPrompt.Dispose();
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
                 }
             }
+        }
+
+        public static bool IsRunningOnMono()
+        {
+            return Type.GetType("Mono.Runtime") != null;
         }
     }
 }

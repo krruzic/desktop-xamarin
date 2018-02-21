@@ -14,6 +14,7 @@ namespace TurtleWallet
     {
         public static int rpcID = 0;
         public static string _rpcRand = new Random().Next(10000000, 999999999).ToString();
+
         private static JObject _request(string method, Dictionary<string,object> args)
         {
             var builtURL = Properties.Settings.Default.RPCprotocol + "://" + Properties.Settings.Default.RPCdestination + ":" + Properties.Settings.Default.RPCport + Properties.Settings.Default.RPCtrailing;
@@ -27,8 +28,8 @@ namespace TurtleWallet
             };
             string payloadJSON = JsonConvert.SerializeObject(payload, Formatting.Indented);
             rpcID++;
-
-            var cli = new WebClient();
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            var cli = new TurtleClient();
             cli.Headers[HttpRequestHeader.ContentType] = "application/json";
             string response = cli.UploadString(builtURL, payloadJSON);
 
@@ -61,7 +62,7 @@ namespace TurtleWallet
             return response;
         }
 
-        public static Tuple<bool,string,JObject> request(string method, Dictionary<string, object> args = null)
+        public static Tuple<bool,string,JObject> Request(string method, Dictionary<string, object> args = null)
         {
             if (args == null) args = new Dictionary<string, object>() { };
             try
@@ -75,10 +76,12 @@ namespace TurtleWallet
             }
         }
 
-        public static Tuple<bool,string, Process> startDaemon(string wallet, string pass)
+        public static Tuple<bool,string, Process> StartDaemon(string wallet, string pass)
         {
             var curDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             var walletdexe = System.IO.Path.Combine(curDir, "walletd.exe");
+            if (IsRunningOnMono())
+                walletdexe = System.IO.Path.Combine(curDir, "walletd");
             if (!System.IO.File.Exists(wallet))
             {
                 return Tuple.Create<bool,string,Process>(false, "Wallet file cannot be found! Must exit!", null);
@@ -112,7 +115,7 @@ namespace TurtleWallet
 
         }
 
-        public static Tuple<bool,JObject> get_live_stats()
+        public static Tuple<bool,JObject> Get_live_stats()
         {
             string pool_eu = "http://eu.turtlepool.space:8117/live_stats";
             string pool_us = "https://pool.turtleco.in/api/live_stats";
@@ -143,6 +146,11 @@ namespace TurtleWallet
                 var jobj = JObject.Parse(content);
                 return Tuple.Create<bool, JObject>(true, jobj);
             }
+        }
+
+        public static bool IsRunningOnMono()
+        {
+            return Type.GetType("Mono.Runtime") != null;
         }
     }
 
@@ -203,6 +211,15 @@ namespace TurtleWallet
         {
             HttpWebRequest request = base.GetWebRequest(address) as HttpWebRequest;
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            return request;
+        }
+    }
+    class TurtleClient : WebClient
+    {
+        protected override WebRequest GetWebRequest(Uri address)
+        {
+            HttpWebRequest request = base.GetWebRequest(address) as HttpWebRequest;
+            request.Timeout = 60000;
             return request;
         }
     }

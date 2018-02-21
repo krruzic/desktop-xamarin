@@ -71,7 +71,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="CreateWalletKeyPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateWalletKeyPrompt.Designer.cs">
+      <DependentUpon>CreateWalletKeyPrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateWalletPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <Compile Include="wallet.Designer.cs">
       <DependentUpon>wallet.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CreateWalletKeyPrompt.resx">
+      <DependentUpon>CreateWalletKeyPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateWalletPrompt.resx">
       <DependentUpon>CreateWalletPrompt.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +185,8 @@
   <ItemGroup>
     <Content Include="green_turtle_shield.ico" />
     <Content Include="green_turtle_shield_icon.ico" />
+    <None Include="Resources\trtls.png" />
+    <None Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trtl_banner.png" />

@@ -14,13 +14,13 @@ namespace TurtleWallet
 {
     public partial class CreateWalletPrompt : Form
     {
-        public string walletPath
+        public string WalletPath
         {
             get;
             set;
         }
 
-        public string walletPassword
+        public string WalletPassword
         {
             get;
             set;
@@ -31,7 +31,7 @@ namespace TurtleWallet
             InitializeComponent();
         }
 
-        private void createWalletButton_MouseEnter(object sender, EventArgs e)
+        private void CreateWalletButton_MouseEnter(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(44, 44, 44);
             var forcolor = Color.FromArgb(39, 170, 107);
@@ -40,7 +40,7 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void createWalletButton_MouseLeave(object sender, EventArgs e)
+        private void CreateWalletButton_MouseLeave(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(52, 52, 52);
             var forcolor = Color.FromArgb(224, 224, 224);
@@ -49,7 +49,7 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void cancelButton_MouseEnter(object sender, EventArgs e)
+        private void CancelButton_MouseEnter(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(44, 44, 44);
             var forcolor = Color.FromArgb(39, 170, 107);
@@ -58,7 +58,7 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void cancelButton_MouseLeave(object sender, EventArgs e)
+        private void CancelButton_MouseLeave(object sender, EventArgs e)
         {
             var backcolor = Color.FromArgb(52, 52, 52);
             var forcolor = Color.FromArgb(224, 224, 224);
@@ -67,21 +67,21 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void exitButton_MouseEnter(object sender, EventArgs e)
+        private void ExitButton_MouseEnter(object sender, EventArgs e)
         {
             var forcolor = Color.FromArgb(39, 170, 107);
             var currentButton = (Label)sender;
             currentButton.ForeColor = forcolor;
         }
 
-        private void exitButton_MouseLeave(object sender, EventArgs e)
+        private void ExitButton_MouseLeave(object sender, EventArgs e)
         {
             var forcolor = Color.White;
             var currentButton = (Label)sender;
             currentButton.ForeColor = forcolor;
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to cancel your Turtle Wallet creation?", "Cancel wallet creation?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -91,7 +91,7 @@ namespace TurtleWallet
             }
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to cancel your Turtle Wallet creation?", "Cancel wallet creation?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -101,20 +101,20 @@ namespace TurtleWallet
             }
         }
 
-        private void createWalletButton_Click(object sender, EventArgs e)
+        private void CreateWalletButton_Click(object sender, EventArgs e)
         {
-            createWallet();
+            CreateWallet();
         }
 
-        private void walletNameText_KeyDown(object sender, KeyEventArgs e)
+        private void WalletNameText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                createWallet();
+                CreateWallet();
             }
         }
 
-        private void createWallet()
+        private void CreateWallet()
         {
             if (walletNameText.Text == "")
             {
@@ -147,23 +147,31 @@ namespace TurtleWallet
             var curDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             var _walletFile = System.IO.Path.Combine(curDir, walletNameText.Text + ".wallet");
             var walletdexe = System.IO.Path.Combine(curDir, "walletd.exe");
+            if (IsRunningOnMono())
+                walletdexe = System.IO.Path.Combine(curDir, "walletd");
 
             if (!System.IO.File.Exists(walletdexe))
             {
-                MessageBox.Show("The 'walletd.exe' daemon is missing from the folder the wallet is currently running from! Please place 'walletd.exe' next to your wallet exe and run again!", "Turtle Wallet Creation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The 'walletd' daemon is missing from the folder the wallet is currently running from! Please place 'walletd' next to your wallet exe and run again!", "Turtle Wallet Creation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.Abort;
                 this.Close();
             }
             createProgressbar.Visible = true;
+            StringBuilder tmpstdout = new StringBuilder();
             try
             {
                 Process p = new Process();
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.FileName = walletdexe;
                 p.StartInfo.Arguments = "-w \"" + _walletFile + "\" -p " + passwordText.Text + " -g";
+                p.OutputDataReceived += (sender, args) => tmpstdout.AppendLine(args.Data);
                 p.Start();
+                p.BeginOutputReadLine();
                 p.WaitForExit(10000);
+                p.CancelOutputRead();
 
                 if (!System.IO.File.Exists(_walletFile))
                 {
@@ -173,9 +181,9 @@ namespace TurtleWallet
                 }
                 else
                 {
-                    walletPath = _walletFile;
-                    walletPassword = passwordText.Text;
-                    MessageBox.Show("Wallet successfully created at: " + Environment.NewLine + _walletFile, "Turtle Wallet Creation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    WalletPath = _walletFile;
+                    WalletPassword = passwordText.Text;
+                    MessageBox.Show("Wallet successfully created at: " + Environment.NewLine + _walletFile + Environment.NewLine + "IMPORTANT:" + Environment.NewLine + "As soon as the main GUI to the wallet opens, you should proceed to the 'BACKUP KEYS' tab to save your secret and view key in case of wallet failure in the future!", "Turtle Wallet Creation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -189,19 +197,24 @@ namespace TurtleWallet
             }
         }
 
-        private void passwordText_KeyDown(object sender, KeyEventArgs e)
+        public static bool IsRunningOnMono()
+        {
+            return Type.GetType("Mono.Runtime") != null;
+        }
+
+        private void PasswordText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                createWallet();
+                CreateWallet();
             }
         }
 
-        private void passwordConfirmText_KeyDown(object sender, KeyEventArgs e)
+        private void PasswordConfirmText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                createWallet();
+                CreateWallet();
             }
         }
     }

@@ -14,22 +14,23 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class updatePrompt : Form
+    public partial class UpdatePrompt : Form
     {
-        public updatePrompt()
+        public UpdatePrompt()
         {
             InitializeComponent();
         }
 
-        private void updatePrompt_Load(object sender, EventArgs e)
+        private void UpdatePrompt_Load(object sender, EventArgs e)
         {
             updateWorker.RunWorkerAsync();
         }
 
-        void updateRequest()
+        void UpdateRequest()
         {
             try
             {
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
                 string thisVersionString = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 bool needsUpdate = false;
                 var builtURL = "https://api.github.com/repos/turtlecoin/desktop-xamarin/releases/latest";
@@ -37,7 +38,7 @@ namespace TurtleWallet
                 var cli = new WebClient();
                 cli.Headers[HttpRequestHeader.ContentType] = "application/json";
                 cli.Headers[HttpRequestHeader.UserAgent] = "TurtleCoin Wallet " + thisVersionString;
-                string response = cli.DownloadString(builtURL);
+                string response = cli.DownloadString(new Uri(builtURL));
 
                 var jobj = JObject.Parse(response);
 
@@ -76,59 +77,19 @@ namespace TurtleWallet
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Failed to check for updates!", "TurtleCoin Wallet");
+                MessageBox.Show("Failed to check for updates! " + ex.Message + Environment.NewLine + ex.InnerException, "TurtleCoin Wallet");
             }
         }
 
-        private void updateWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void UpdateWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Close();
         }
 
-        private void updateWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                var curDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                var walletdexe = System.IO.Path.Combine(curDir, "walletd.exe");
-                long length = new System.IO.FileInfo(walletdexe).Length;
-                if (length != 6162432)
-                {
-                    this.updaterLabel.BeginInvoke((MethodInvoker)delegate ()
-                    {
-                        updaterLabel.Text = "Updating daemon, please wait..";
-                    });
-                    var dl = new WebClient();
-                    dl.Headers[HttpRequestHeader.UserAgent] = "TurtleCoin Wallet ";
-                    dl.DownloadFile("https://github.com/turtlecoin/turtlecoin/releases/download/v0.3.0/TurtleCoin-v0.3.0-windows-CLI.zip", "daemon.zip");
-                    if (!System.IO.File.Exists("daemon.zip"))
-                    {
-                        MessageBox.Show("Could not update daemon because it could not be downloaded. Please manually update!", "TurtleCoin Wallet");
-                    }
-                    else
-                    {
-                        using (ZipArchive archive = ZipFile.OpenRead("daemon.zip"))
-                        {
-                            if (System.IO.File.Exists("walletd.exe"))
-                                try { System.Diagnostics.Process.GetProcessesByName("walletd")[0].Kill(); } catch { }
-                                System.IO.File.Delete("walletd.exe");
-                            foreach (ZipArchiveEntry entry in archive.Entries.Where(efile => efile.FullName.Contains("walletd")))
-                            {
-                                entry.ExtractToFile("walletd.exe");
-                            }
-                        }
-                        System.Threading.Thread.Sleep(500);
-                        System.IO.File.Delete("daemon.zip");
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Failed to check/update daemon!", "TurtleCoin Wallet");
-            }
-
             try
             {
                 if (System.AppDomain.CurrentDomain.FriendlyName == "TurtleWallet_update.exe")
@@ -149,7 +110,7 @@ namespace TurtleWallet
                 MessageBox.Show("Failed to check for updates!", "TurtleCoin Wallet");
             }
 
-            updateRequest();
+            UpdateRequest();
         }
     }
 

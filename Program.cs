@@ -8,6 +8,7 @@ namespace TurtleWallet
 {
     static class Program
     {
+        public static bool jumpBack = false;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -24,7 +25,7 @@ namespace TurtleWallet
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var uPrompt = new updatePrompt();
+            var uPrompt = new UpdatePrompt();
             uPrompt.ShowDialog();
 
             string _pass = "";
@@ -41,13 +42,13 @@ namespace TurtleWallet
                         return;
                     else
                     {
-                        _pass = sPrompt.walletPassword;
-                        _wallet = sPrompt.walletPath;
+                        _pass = sPrompt.WalletPassword;
+                        _wallet = sPrompt.WalletPath;
                     }
                 }
                 else
                 {
-                    _pass = pPrompt.walletPassword;
+                    _pass = pPrompt.WalletPassword;
                     _wallet = Properties.Settings.Default.walletPath;
                     pPrompt.Dispose();
                 }
@@ -60,21 +61,17 @@ namespace TurtleWallet
                     return;
                 else
                 {
-                    _pass = sPrompt.walletPassword;
-                    _wallet = sPrompt.walletPath;
+                    _pass = sPrompt.WalletPassword;
+                    _wallet = sPrompt.WalletPath;
                 }
             }
 
-            //var args = new Dictionary<string, object>() { };
-            //var testobj = ConnectionManager.rpcRequest("http://127.0.0.1:8070/json_rpc", "getBalance", args);
-            //foreach(var item in testobj)
-            //{
-            //    Console.Write(item.Key + "-" + item.Value);
-            //}
-
-
+jumpBackFlag:
             var splash = new Splash(_wallet,_pass);
             Application.Run(splash);
+            if (jumpBack) //Hacky, but will work for now until a proper loop can be placed.
+                jumpBack = false;
+                goto jumpBackFlag;
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

@@ -1,6 +1,6 @@
 ﻿namespace TurtleWallet
 {
-    partial class updatePrompt
+    partial class UpdatePrompt
     {
         /// <summary>
         /// Required designer variable.
@@ -45,18 +45,20 @@
             this.updateMainPanel.Controls.Add(this.updaterLabel);
             this.updateMainPanel.Controls.Add(this.welcomeLabel);
             this.updateMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateMainPanel.Location = new System.Drawing.Point(0, 199);
+            this.updateMainPanel.Location = new System.Drawing.Point(0, 162);
+            this.updateMainPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.updateMainPanel.Name = "updateMainPanel";
-            this.updateMainPanel.Size = new System.Drawing.Size(597, 122);
+            this.updateMainPanel.Size = new System.Drawing.Size(448, 99);
             this.updateMainPanel.TabIndex = 1;
             // 
             // updateBar
             // 
             this.updateBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.updateBar.ForeColor = System.Drawing.Color.Green;
-            this.updateBar.Location = new System.Drawing.Point(0, 99);
+            this.updateBar.Location = new System.Drawing.Point(0, 80);
+            this.updateBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.updateBar.Name = "updateBar";
-            this.updateBar.Size = new System.Drawing.Size(597, 23);
+            this.updateBar.Size = new System.Drawing.Size(448, 19);
             this.updateBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.updateBar.TabIndex = 99;
             // 
@@ -66,9 +68,10 @@
             this.updaterLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.updaterLabel.Font = new System.Drawing.Font("Segoe UI Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updaterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
-            this.updaterLabel.Location = new System.Drawing.Point(0, 56);
+            this.updaterLabel.Location = new System.Drawing.Point(0, 46);
+            this.updaterLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.updaterLabel.Name = "updaterLabel";
-            this.updaterLabel.Size = new System.Drawing.Size(597, 39);
+            this.updaterLabel.Size = new System.Drawing.Size(448, 32);
             this.updaterLabel.TabIndex = 98;
             this.updaterLabel.Text = "Checking for updates ...";
             this.updaterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -80,40 +83,44 @@
             this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI Light", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.welcomeLabel.ForeColor = System.Drawing.Color.White;
             this.welcomeLabel.Location = new System.Drawing.Point(0, 0);
+            this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(597, 56);
+            this.welcomeLabel.Size = new System.Drawing.Size(448, 46);
             this.welcomeLabel.TabIndex = 97;
             this.welcomeLabel.Text = "Welcome to Turtle Wallet";
             this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // updateLogo
             // 
+            this.updateLogo.BackgroundImage = global::TurtleWallet.Properties.Resources.trtl_banner;
+            this.updateLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.updateLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.updateLogo.Image = global::TurtleWallet.Properties.Resources.trtl_banner;
             this.updateLogo.Location = new System.Drawing.Point(0, 0);
+            this.updateLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.updateLogo.Name = "updateLogo";
-            this.updateLogo.Size = new System.Drawing.Size(597, 199);
+            this.updateLogo.Size = new System.Drawing.Size(448, 162);
             this.updateLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.updateLogo.TabIndex = 0;
             this.updateLogo.TabStop = false;
             // 
             // updateWorker
             // 
-            this.updateWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateWorker_DoWork);
-            this.updateWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.updateWorker_RunWorkerCompleted);
+            this.updateWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpdateWorker_DoWork);
+            this.updateWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpdateWorker_RunWorkerCompleted);
             // 
-            // updatePrompt
+            // UpdatePrompt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 321);
+            this.ClientSize = new System.Drawing.Size(448, 261);
             this.Controls.Add(this.updateMainPanel);
             this.Controls.Add(this.updateLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "updatePrompt";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "UpdatePrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.updatePrompt_Load);
+            this.Load += new System.EventHandler(this.UpdatePrompt_Load);
             this.updateMainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.updateLogo)).EndInit();
             this.ResumeLayout(false);
