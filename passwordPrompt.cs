@@ -21,6 +21,12 @@ namespace TurtleWallet
         public passwordPrompt()
         {
             InitializeComponent();
+            this.Text = "Turtle Wallet";
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Utilities.CloseProgram(e);
         }
 
         private void PasswordText_KeyDown(object sender, KeyEventArgs e)
@@ -31,33 +37,9 @@ namespace TurtleWallet
                 {
                     WalletPassword = passwordText.Text;
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    Utilities.Close(this);
                 }
             }
-        }
-
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to cancel your Turtle Wallet creation?", "Cancel wallet creation?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
-        }
-
-        private void ExitButton_MouseEnter(object sender, EventArgs e)
-        {
-            var forcolor = Color.FromArgb(39, 170, 107);
-            var currentButton = (Label)sender;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void ExitButton_MouseLeave(object sender, EventArgs e)
-        {
-            var forcolor = Color.White;
-            var currentButton = (Label)sender;
-            currentButton.ForeColor = forcolor;
         }
 
         private void CancelButton_MouseEnter(object sender, EventArgs e)
@@ -101,19 +83,16 @@ namespace TurtleWallet
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to cancel?", "Turtle Wallet Cancel?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
+                Utilities.Close(this);
             }
         }
 
         private void CreateWalletButton_Click(object sender, EventArgs e)
         {
-            if(passwordText.Text != "")
-            {
-                WalletPassword = passwordText.Text;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
+            WalletPassword = passwordText.Text;
+            Utilities.SetAppClosing(false);
+            this.DialogResult = DialogResult.OK;
+            Utilities.Close(this);
         }
     }
 }

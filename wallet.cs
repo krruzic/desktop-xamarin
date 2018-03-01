@@ -562,7 +562,7 @@ namespace TurtleWallet
             }
         }
 
-        private void Wallet_FormClosing(object sender, FormClosingEventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
             updateLabel.Text = "Saving wallet, Please wait..";
             saverWorker.RunWorkerAsync();
@@ -577,9 +577,12 @@ namespace TurtleWallet
             int amount = 0;
             int fee = 10;
 
-            if (!sendAddr.StartsWith("TRTL") || sendAddr.Length <= 50)
+            if (!sendAddr.StartsWith("TRTL") || sendAddr.Length != 99)
             {
-                MessageBox.Show("The address you are sending to is invalid, please check it.", "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The address you are sending to is invalid, " +
+                                "please check it. It should start with TRTL and " +
+                                "be 99 characters long.", "TurtleCoin Wallet", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             string myAddr = myAddressText.Text;
@@ -810,6 +813,7 @@ namespace TurtleWallet
                 windowLogger.Log(LogTextbox, "Error occured on getViewKey:" + Environment.NewLine + viewresp.Item2);
                 return;
             }
+
             string viewkey = viewresp.Item3["viewSecretKey"].ToString();
             viewKeyText.Text = viewkey;
 
@@ -817,16 +821,18 @@ namespace TurtleWallet
             {
                 { "address", myAddressText.Text }
             };
+
             var spendresp = ConnectionManager.Request("getSpendKeys", args);
+
             if (spendresp.Item1 == false)
             {
                 MessageBox.Show("Error occured on getSpendKeys:" + Environment.NewLine + spendresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 windowLogger.Log(LogTextbox, "Error occured on getSpendKeys:" + Environment.NewLine + spendresp.Item2);
                 return;
             }
+
             string spendkey = spendresp.Item3["spendSecretKey"].ToString();
-            string spendkeypub = spendresp.Item3["spendPublicKey"].ToString();
-            spendKeyText.Text = "SpendKeyPublic:" + Environment.NewLine + spendkeypub + Environment.NewLine + Environment.NewLine + "SpendKeySecret: " + Environment.NewLine + spendkey;
+            spendKeyText.Text = spendkey;
             MessageBox.Show("Wallet keys successfully unlocked!", "TurtleCoin Wallet");
         }
 

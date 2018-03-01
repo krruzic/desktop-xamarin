@@ -80,39 +80,51 @@ namespace TurtleWallet
         {
             var curDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             var walletdexe = System.IO.Path.Combine(curDir, "walletd.exe");
+
             if (IsRunningOnMono())
+            {
                 walletdexe = System.IO.Path.Combine(curDir, "walletd");
+            }
+
             if (!System.IO.File.Exists(wallet))
             {
                 return Tuple.Create<bool,string,Process>(false, "Wallet file cannot be found! Must exit!", null);
             }
-            bool goodExistingDaemonRunning = false;
-            var _procs = Process.GetProcessesByName("walletd");
-            if(_procs.Length > 0)
+
+            var conflictingProcesses = Process.GetProcessesByName("walletd")
+                               .Concat(Process.GetProcessesByName("TurtleCoind")).ToArray();
+
+            int numConflictingProcesses = conflictingProcesses.Length;
+
+            for (int i = 0; i < numConflictingProcesses; i++)
             {
-                var _proc_Path = System.IO.Path.GetDirectoryName(_procs[0].MainModule.FileName);
-                if (_proc_Path == curDir)
-                    goodExistingDaemonRunning = true;
-                else
-                    _procs[0].Kill();
+                /* Need to kill all walletd and turtlecoind processes so
+                   they don't lock the DB */
+                conflictingProcesses[i].Kill();
             }
-            if (goodExistingDaemonRunning)
-                return Tuple.Create<bool,string,Process>(true,"",_procs[0]);
-            else
+
+            Process p = new Process();
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.FileName = walletdexe;
+            p.StartInfo.Arguments = CLIEncoder.Encode(new string[] {"-w", wallet, "-p", pass, "--local", "--rpc-password", _rpcRand});
+
+            int maxConnectionAttempts = 5;
+
+            /* It takes a small amount of time to kill the other processes
+               if needed, so lets try and connect a few times before failing. */
+            for (int i = 0; i < maxConnectionAttempts; i++)
             {
-                Process p = new Process();
-                p.StartInfo.CreateNoWindow = true;
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                p.StartInfo.FileName = walletdexe;
-                p.StartInfo.Arguments = "-w \"" + wallet + "\" -p \"" + pass + "\" --local --rpc-password " + _rpcRand;
                 p.Start();
                 System.Threading.Thread.Sleep(1500);
-                if (p.HasExited)
-                    return Tuple.Create<bool, string, Process>(false, "Unable to keep daemon up!", null);
-                return Tuple.Create<bool, string, Process>(true, "", p);
+
+                if (!p.HasExited)
+                {
+                    return Tuple.Create<bool, string, Process>(true, "", p);
+                }
             }
 
-
+            return Tuple.Create<bool, string, Process>(false, "Unable to keep daemon up!", null);
         }
 
         public static Tuple<bool,JObject> Get_live_stats()

@@ -71,7 +71,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="CommandLineEncoder.cs" />
     <Compile Include="CreateWalletKeyPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,7 +104,6 @@
     <Compile Include="CreateWalletPrompt.Designer.cs">
       <DependentUpon>CreateWalletPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="globals.cs" />
     <Compile Include="logging.cs" />
     <Compile Include="passwordPrompt.cs">
       <SubType>Form</SubType>
@@ -131,6 +131,7 @@
     <Compile Include="updatePrompt.Designer.cs">
       <DependentUpon>updatePrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <Compile Include="wallet.cs">
       <SubType>Form</SubType>
     </Compile>

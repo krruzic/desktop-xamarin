@@ -38,6 +38,7 @@ namespace TurtleWallet
         public SelectionPrompt()
         {
             InitializeComponent();
+            this.Text = "Turtle Wallet";
             //if(IsRunningOnMono())
             //{
             //    this.Width = this.Width + 150;
@@ -81,42 +82,24 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close Turtle Wallet?", "Turtle Wallet", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
-        }
-
-        private void ExitButton_MouseEnter(object sender, EventArgs e)
-        {
-            var forcolor = Color.FromArgb(39, 170, 107);
-            var currentButton = (Label)sender;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void ExitButton_MouseLeave(object sender, EventArgs e)
-        {
-            var forcolor = Color.White;
-            var currentButton = (Label)sender;
-            currentButton.ForeColor = forcolor;
+            Utilities.CloseProgram(e);
         }
 
         private void CreateWalletButton_Click(object sender, EventArgs e)
         {
             CreateWalletPrompt CWP = new CreateWalletPrompt();
-            this.Hide();
+            Utilities.Hide(this);
             var CWPreturn = CWP.ShowDialog();
             if(CWPreturn == DialogResult.OK)
             {
                 WalletPath = CWP.WalletPath;
                 WalletPassword = CWP.WalletPassword;
+                Utilities.SetAppClosing(false);
                 this.DialogResult = DialogResult.OK;
-                CWP.Dispose();
-                this.Close();
+                Utilities.Close(CWP);
+                Utilities.Close(this);
             }
             this.Show();
         }
@@ -138,21 +121,22 @@ namespace TurtleWallet
                 {
                     WalletPath = findWalletDialog.FileName;
                     var pPrompt = new passwordPrompt();
-                    this.Hide();
+                    Utilities.Hide(this);
                     var pResult = pPrompt.ShowDialog();
                     if(pResult != DialogResult.OK)
                     {
                         findWalletDialog.Dispose();
-                        pPrompt.Dispose();
+                        Utilities.Close(pPrompt);
                         this.Show();
                         return;
                     }
                     else
                     {
                         WalletPassword = pPrompt.WalletPassword;
-                        pPrompt.Dispose();
+                        Utilities.Close(pPrompt);
+                        Utilities.SetAppClosing(false);
                         this.DialogResult = DialogResult.OK;
-                        this.Close();
+                        Utilities.Close(this);
                     }
                 }
             }

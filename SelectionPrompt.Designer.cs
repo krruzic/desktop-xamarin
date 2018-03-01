@@ -36,7 +36,6 @@
             this.selectWalletButton = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.createWalletButton = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -154,24 +153,6 @@
             this.createWalletButton.MouseEnter += new System.EventHandler(this.CreateWalletButton_MouseEnter);
             this.createWalletButton.MouseLeave += new System.EventHandler(this.CreateWalletButton_MouseLeave);
             // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.AutoSize = true;
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(422, 3);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(23, 24);
-            this.exitButton.TabIndex = 2;
-            this.exitButton.Text = "✘";
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            this.exitButton.MouseEnter += new System.EventHandler(this.ExitButton_MouseEnter);
-            this.exitButton.MouseLeave += new System.EventHandler(this.ExitButton_MouseLeave);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::TurtleWallet.Properties.Resources.trtl_banner;
@@ -190,10 +171,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 400);
-            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SelectionPrompt";
@@ -218,6 +198,5 @@
         private System.Windows.Forms.Label selectWalletButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label createWalletButton;
-        private System.Windows.Forms.Label exitButton;
     }
 }
