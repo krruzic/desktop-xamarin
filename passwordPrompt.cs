@@ -36,7 +36,7 @@ namespace TurtleWallet
                 if (passwordText.Text != "" && passwordText.Text.Length > 6)
                 {
                     WalletPassword = passwordText.Text;
-                    this.DialogResult = DialogResult.OK;
+                    Utilities.SetDialogResult(this, DialogResult.OK);
                     Utilities.Close(this);
                 }
             }
@@ -90,8 +90,7 @@ namespace TurtleWallet
         private void CreateWalletButton_Click(object sender, EventArgs e)
         {
             WalletPassword = passwordText.Text;
-            Utilities.SetAppClosing(false);
-            this.DialogResult = DialogResult.OK;
+            Utilities.SetDialogResult(this, DialogResult.OK);
             Utilities.Close(this);
         }
     }

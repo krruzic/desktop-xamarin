@@ -248,7 +248,7 @@ namespace TurtleWallet
                     {
                         MessageBox.Show("Turtle Wallet has tried numerous times to relaunch the needed daemon and has failed. Please relaunch the wallet!", "Walletd daemon could not be recovered!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         windowLogger.Log(LogTextbox, "Turtle Wallet has tried numerous times to relaunch the needed daemon and has failed. Please relaunch the wallet!");
-                        this.Close();
+                        Utilities.Close(this);
                     }
                 }
                 else

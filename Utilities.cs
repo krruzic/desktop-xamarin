@@ -61,6 +61,13 @@ namespace TurtleWallet
             appClosing = true;
         }
 
+        public static void SetDialogResult(Form caller, DialogResult res)
+        {
+            appClosing = false;
+            caller.DialogResult = res;
+            appClosing = true;
+        }
+
         public static void SetAppClosing(bool _appClosing)
         {
             appClosing = _appClosing;

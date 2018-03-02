@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -82,6 +82,24 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
+        private void ImportWalletButton_MouseEnter(object sender, EventArgs e)
+        {
+            var backcolor = Color.FromArgb(44, 44, 44);
+            var forcolor = Color.FromArgb(39, 170, 107);
+            var currentButton = (Label)sender;
+            currentButton.BackColor = backcolor;
+            currentButton.ForeColor = forcolor;
+        }
+
+        private void ImportWalletButton_MouseLeave(object sender, EventArgs e)
+        {
+            var backcolor = Color.FromArgb(52, 52, 52);
+            var forcolor = Color.FromArgb(224, 224, 224);
+            var currentButton = (Label)sender;
+            currentButton.BackColor = backcolor;
+            currentButton.ForeColor = forcolor;
+        }
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             Utilities.CloseProgram(e);
@@ -96,9 +114,24 @@ namespace TurtleWallet
             {
                 WalletPath = CWP.WalletPath;
                 WalletPassword = CWP.WalletPassword;
-                Utilities.SetAppClosing(false);
-                this.DialogResult = DialogResult.OK;
+                Utilities.SetDialogResult(this, DialogResult.OK);
                 Utilities.Close(CWP);
+                Utilities.Close(this);
+            }
+            this.Show();
+        }
+
+        private void ImportWalletButton_Click(object sender, EventArgs e)
+        {
+            ImportWalletPrompt IWP = new ImportWalletPrompt();
+            Utilities.Hide(this);
+            var IWPreturn = IWP.ShowDialog();
+            if(IWPreturn == DialogResult.OK)
+            {
+                WalletPath = IWP.ImportWalletPath;
+                WalletPassword = IWP.ImportWalletPassword;
+                Utilities.SetDialogResult(this, DialogResult.OK);
+                Utilities.Close(IWP);
                 Utilities.Close(this);
             }
             this.Show();
@@ -134,8 +167,7 @@ namespace TurtleWallet
                     {
                         WalletPassword = pPrompt.WalletPassword;
                         Utilities.Close(pPrompt);
-                        Utilities.SetAppClosing(false);
-                        this.DialogResult = DialogResult.OK;
+                        Utilities.SetDialogResult(this, DialogResult.OK);
                         Utilities.Close(this);
                     }
                 }
