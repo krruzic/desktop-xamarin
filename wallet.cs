@@ -564,9 +564,15 @@ namespace TurtleWallet
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            updateLabel.Text = "Saving wallet, Please wait..";
-            saverWorker.RunWorkerAsync();
-            MessageBox.Show("Saving Wallet, Please wait...", "TurtleCoin Wallet");
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close Turtle Wallet?", "Turtle Wallet", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                updateLabel.Text = "Saving wallet, Please wait..";
+                saverWorker.RunWorkerAsync();
+                MessageBox.Show("Saving Wallet, Please wait...", "TurtleCoin Wallet");
+            }
+
             e.Cancel = true;
         }
 
