@@ -218,7 +218,7 @@ namespace TurtleWallet
             this.passwordConfirmText.ForeColor = System.Drawing.Color.White;
             this.passwordConfirmText.Location = new System.Drawing.Point(0, 0);
             this.passwordConfirmText.Margin = new System.Windows.Forms.Padding(2);
-            this.passwordConfirmText.MaxLength = 150;
+            this.passwordConfirmText.MaxLength = 151;
             this.passwordConfirmText.Name = "passwordConfirmText";
             this.passwordConfirmText.Size = new System.Drawing.Size(261, 29);
             this.passwordConfirmText.TabIndex = 7;

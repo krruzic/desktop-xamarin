@@ -127,6 +127,11 @@ namespace TurtleWallet
                 MessageBox.Show("Please enter a password that is larger than 6 characters", "Turtle Wallet Creation");
                 return;
             }
+            else if (passwordText.Text.Length > 150)
+            {
+                MessageBox.Show("Passwords cannot be longer than 150 characters!", "Turtle Wallet Creation");
+                return;
+            }
 
             if (passwordText.Text != passwordConfirmText.Text)
             {

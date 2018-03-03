@@ -343,7 +343,7 @@
             this.passwordText.ForeColor = System.Drawing.Color.White;
             this.passwordText.Location = new System.Drawing.Point(0, 0);
             this.passwordText.Margin = new System.Windows.Forms.Padding(2);
-            this.passwordText.MaxLength = 150;
+            this.passwordText.MaxLength = 151;
             this.passwordText.Name = "passwordText";
             this.passwordText.Size = new System.Drawing.Size(261, 29);
             this.passwordText.TabIndex = 6;
