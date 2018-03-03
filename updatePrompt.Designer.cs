@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdatePrompt));
             this.updateMainPanel = new System.Windows.Forms.Panel();
             this.updateBar = new System.Windows.Forms.ProgressBar();
             this.updaterLabel = new System.Windows.Forms.Label();
@@ -119,7 +120,8 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UpdatePrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Text = "TurtleCoin Wallet";
             this.Load += new System.EventHandler(this.UpdatePrompt_Load);
             this.updateMainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.updateLogo)).EndInit();

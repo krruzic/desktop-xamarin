@@ -175,7 +175,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateWalletKeyPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "TurtleCoin Wallet";
             this.createMainPanel.ResumeLayout(false);
             this.createMainTable.ResumeLayout(false);
             this.createMainTable.PerformLayout();

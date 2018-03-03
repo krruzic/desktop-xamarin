@@ -68,7 +68,7 @@
             this.copyAddressButton = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.walletTabControl = new System.Windows.Forms.TabControl();
+            this.walletTabControl = new TurtleWallet.NoBorderTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -2136,7 +2136,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel3;
 #if DEBUG
-        private System.Windows.Forms.TabControl walletTabControl;
+        private TurtleWallet.NoBorderTabControl walletTabControl;
 #else
         private TurtleWallet.NoBorderTabControl walletTabControl;
 #endif

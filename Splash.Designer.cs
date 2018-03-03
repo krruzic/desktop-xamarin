@@ -201,7 +201,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Splash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "TurtleCoin Wallet";
             this.Load += new System.EventHandler(this.Splash_Load);
             this.panel1.ResumeLayout(false);
             this.splashDrop.ResumeLayout(false);
