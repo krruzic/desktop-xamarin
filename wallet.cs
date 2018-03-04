@@ -268,19 +268,19 @@ namespace TurtleWallet
                         if (cachedTrx.Contains(transaction["transactionHash"].ToString()))
                             continue;
                         string address = "";
-                        long desired_transfer_amount = 0;
-                        if ((long)transaction["amount"] < 0)
+                        float desired_transfer_amount = 0;
+                        if ((float)transaction["amount"] < 0)
                         {
-                            desired_transfer_amount = ((long)transaction["amount"] + (long)transaction["fee"]) * -1;
+                            desired_transfer_amount = ((float)transaction["amount"] + (float)transaction["fee"]) * -1;
                         }
                         else
                         {
-                            desired_transfer_amount = ((long)transaction["amount"]);
+                            desired_transfer_amount = ((float)transaction["amount"]);
                         }
 
                         foreach(var transfer in transaction["transfers"])
                         {
-                            if((long)transfer["amount"] == desired_transfer_amount)
+                            if((float)transfer["amount"] == desired_transfer_amount)
                             {
                                 address = transfer["address"].ToString();
                             }
@@ -299,7 +299,7 @@ namespace TurtleWallet
                             subitems.Add(confirmItem);
                         }
 
-                        if((long)transaction["amount"] > 0)
+                        if((float)transaction["amount"] > 0)
                         {
                             var directionItem = new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "IN\u2007\u2007⇚\u2007\u2007\u2007", System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0))))), System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29))))), new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                             subitems.Add(directionItem);
@@ -310,7 +310,7 @@ namespace TurtleWallet
                             subitems.Add(directionItem);
                         }
 
-                        var amountItem = new System.Windows.Forms.ListViewItem.ListViewSubItem(null, ((long)(transaction["amount"]) / 100).ToString("0.00"), System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29))))), new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                        var amountItem = new System.Windows.Forms.ListViewItem.ListViewSubItem(null, ((float)(transaction["amount"]) / 100).ToString("0.00"), System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29))))), new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                         subitems.Add(amountItem);
 
                         System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
