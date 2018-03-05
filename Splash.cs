@@ -43,11 +43,16 @@ namespace TurtleWallet
             WalletPath = _wallet;
             WalletPassword = _password;
             versionLabel.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            this.Text = "Turtle Wallet";
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Utilities.CloseProgram(e);
         }
 
         private void Splash_Load(object sender, EventArgs e)
         {
-            string curDir = Directory.GetCurrentDirectory();
             StatusLabel.Text = "Connecting to daemon ...";
             splashBackgroundWorker.RunWorkerAsync();
         }
@@ -62,6 +67,31 @@ namespace TurtleWallet
                 if (connReturn.Item1 == false)
                 {
                     this.StatusLabel.BeginInvoke((MethodInvoker)delegate () { this.StatusLabel.Text = "Daemon Connection Failed: " + connReturn.Item2; });
+
+                    if (System.IO.File.Exists("walletd.log")) 
+                    {
+                        using (StreamReader sr = new StreamReader("walletd.log"))
+                        {
+                            string contents = sr.ReadToEnd();
+
+                            if (contents.Contains("Internal error") || 
+                                contents.Contains("Corruption: no meta-nextfile entry in descriptor"))
+                            {
+                                if (MessageBox.Show("Unfortunately, your blockchain has got corrupted. " +
+                                                    "This can occur when you exit the GUI without saving or " +
+                                                    "you lose power, among other reasons. You can fix this by " +
+                                                    "resyncing your blockchain. Open a link on how to do this?",
+                                                    "TurtleCoin Wallet",
+                                                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    System.Diagnostics.Process.Start("https://github.com/turtlecoin/turtlecoin/wiki/Bootstrapping-the-Blockchain");
+                                }
+
+                                throw new Exception("The GUI is unusable until this issue is fixed. It will now close.");
+                            }
+                        }
+                    }
+
                     System.Threading.Thread.Sleep(5000);
                     Environment.Exit(3);
                 }
@@ -77,15 +107,15 @@ namespace TurtleWallet
                         {
                             while (!sr.EndOfStream)
                             {
-                                string linechache = sr.ReadLine();
-                                if (String.IsNullOrWhiteSpace(linechache))
+                                string linecache = sr.ReadLine();
+                                if (String.IsNullOrWhiteSpace(linecache))
                                     break;
-                                lastLine = linechache;
+                                lastLine = linecache;
                                 if (globalLastline == lastLine)
                                     lineWasUpdated = false;
                                 else
                                     lineWasUpdated = true;
-                                globalLastline = linechache;
+                                globalLastline = linecache;
                                 if (lastLine.Contains("The password is wrong") || lastLine.Contains("Restored view public key doesn't correspond to secret key"))
                                 {
                                     try
@@ -178,12 +208,14 @@ namespace TurtleWallet
         private void SplashBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (Program.jumpBack)
-                this.Close();
+            {
+                Utilities.Close(this);
+            }
             else
             {
-                this.Hide();
+                Utilities.Hide(this);
                 var walletWindow = new wallet(WalletPath, WalletPassword, (Process)e.Result);
-                walletWindow.Closed += (s, args) => this.Close();
+                walletWindow.Closed += (s, args) => Utilities.Close(this);
                 walletWindow.Show();
             }
         }

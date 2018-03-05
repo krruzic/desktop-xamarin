@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +38,7 @@ namespace TurtleWallet
         public SelectionPrompt()
         {
             InitializeComponent();
+            this.Text = "Turtle Wallet";
             //if(IsRunningOnMono())
             //{
             //    this.Width = this.Width + 150;
@@ -81,42 +82,57 @@ namespace TurtleWallet
             currentButton.ForeColor = forcolor;
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+        private void ImportWalletButton_MouseEnter(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close Turtle Wallet?", "Turtle Wallet", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
-        }
-
-        private void ExitButton_MouseEnter(object sender, EventArgs e)
-        {
+            var backcolor = Color.FromArgb(44, 44, 44);
             var forcolor = Color.FromArgb(39, 170, 107);
             var currentButton = (Label)sender;
+            currentButton.BackColor = backcolor;
             currentButton.ForeColor = forcolor;
         }
 
-        private void ExitButton_MouseLeave(object sender, EventArgs e)
+        private void ImportWalletButton_MouseLeave(object sender, EventArgs e)
         {
-            var forcolor = Color.White;
+            var backcolor = Color.FromArgb(52, 52, 52);
+            var forcolor = Color.FromArgb(224, 224, 224);
             var currentButton = (Label)sender;
+            currentButton.BackColor = backcolor;
             currentButton.ForeColor = forcolor;
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Utilities.CloseProgram(e);
         }
 
         private void CreateWalletButton_Click(object sender, EventArgs e)
         {
             CreateWalletPrompt CWP = new CreateWalletPrompt();
-            this.Hide();
+            Utilities.Hide(this);
             var CWPreturn = CWP.ShowDialog();
             if(CWPreturn == DialogResult.OK)
             {
                 WalletPath = CWP.WalletPath;
                 WalletPassword = CWP.WalletPassword;
-                this.DialogResult = DialogResult.OK;
-                CWP.Dispose();
-                this.Close();
+                Utilities.SetDialogResult(this, DialogResult.OK);
+                Utilities.Close(CWP);
+                Utilities.Close(this);
+            }
+            this.Show();
+        }
+
+        private void ImportWalletButton_Click(object sender, EventArgs e)
+        {
+            ImportWalletPrompt IWP = new ImportWalletPrompt();
+            Utilities.Hide(this);
+            var IWPreturn = IWP.ShowDialog();
+            if(IWPreturn == DialogResult.OK)
+            {
+                WalletPath = IWP.ImportWalletPath;
+                WalletPassword = IWP.ImportWalletPassword;
+                Utilities.SetDialogResult(this, DialogResult.OK);
+                Utilities.Close(IWP);
+                Utilities.Close(this);
             }
             this.Show();
         }
@@ -138,21 +154,21 @@ namespace TurtleWallet
                 {
                     WalletPath = findWalletDialog.FileName;
                     var pPrompt = new passwordPrompt();
-                    this.Hide();
+                    Utilities.Hide(this);
                     var pResult = pPrompt.ShowDialog();
                     if(pResult != DialogResult.OK)
                     {
                         findWalletDialog.Dispose();
-                        pPrompt.Dispose();
+                        Utilities.Close(pPrompt);
                         this.Show();
                         return;
                     }
                     else
                     {
                         WalletPassword = pPrompt.WalletPassword;
-                        pPrompt.Dispose();
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
+                        Utilities.Close(pPrompt);
+                        Utilities.SetDialogResult(this, DialogResult.OK);
+                        Utilities.Close(this);
                     }
                 }
             }

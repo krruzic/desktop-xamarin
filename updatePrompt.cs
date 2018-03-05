@@ -19,11 +19,17 @@ namespace TurtleWallet
         public UpdatePrompt()
         {
             InitializeComponent();
+            this.Text = "Turtle Wallet";
         }
 
         private void UpdatePrompt_Load(object sender, EventArgs e)
         {
             updateWorker.RunWorkerAsync();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Utilities.CloseProgram(e);
         }
 
         void UpdateRequest()
@@ -85,7 +91,7 @@ namespace TurtleWallet
 
         private void UpdateWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Close();
+            Utilities.Close(this);
         }
 
         private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)

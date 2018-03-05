@@ -19,11 +19,17 @@ namespace TurtleWallet
         {
             InitializeComponent();
             KeysTextbox.Text = keyOutput;
+            this.Text = "Turtle Wallet";
         }
 
         private void CreateWalletButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Utilities.Close(this);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Utilities.CloseProgram(e);
         }
     }
 }
