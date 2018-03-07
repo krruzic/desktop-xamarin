@@ -27,7 +27,6 @@
     /// </summary>
     private void InitializeComponent()
     {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateWalletPrompt));
             this.createMainPanel = new System.Windows.Forms.Panel();
             this.CreateLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
@@ -403,7 +402,6 @@
             this.Controls.Add(this.createMainPanel);
             this.Controls.Add(this.createLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateWalletPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

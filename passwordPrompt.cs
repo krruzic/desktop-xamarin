@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class passwordPrompt : Form
+    public partial class PasswordPrompt : TurtleWalletForm
     {
         public string WalletPassword
         {
@@ -18,7 +18,7 @@ namespace TurtleWallet
             set;
         }
 
-        public passwordPrompt()
+        public PasswordPrompt()
         {
             InitializeComponent();
             this.Text = "Turtle Wallet";

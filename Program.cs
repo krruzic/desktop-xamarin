@@ -40,16 +40,18 @@ namespace TurtleWallet
             string _wallet = "";
 
             /* Reopen wallet from last time */
-            if(Properties.Settings.Default.walletPath != "" && System.IO.File.Exists(Properties.Settings.Default.walletPath))
+            if (Properties.Settings.Default.walletPath != "" && System.IO.File.Exists(Properties.Settings.Default.walletPath))
             {
-                var pPrompt = new passwordPrompt();
+                var pPrompt = new PasswordPrompt();
                 var pResult = pPrompt.ShowDialog();
                 if (pResult != DialogResult.OK)
                 {
                     SelectionPrompt sPrompt = new SelectionPrompt();
                     sPrompt.ShowDialog();
                     if (sPrompt.DialogResult != DialogResult.OK)
+                    {
                         return;
+                    }
                     else
                     {
                         _pass = sPrompt.WalletPassword;

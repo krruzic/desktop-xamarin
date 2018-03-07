@@ -18,6 +18,7 @@ namespace TurtleWallet
     public class FileLogger : LogBase
     {
         public string filePath = "trtl.log";
+
         public override void Log(object obj, string message)
         {
             lock (lockObj)

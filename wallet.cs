@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class wallet : Form
+    public partial class Wallet : TurtleWalletForm
     {
         public static System.Windows.Forms.Timer statsTimer = new System.Windows.Forms.Timer();
         public static int watchdogTimeout = 3;
@@ -61,7 +61,7 @@ namespace TurtleWallet
         {
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawRectangle(SystemPens.GradientInactiveCaption,
-        new Rectangle(e.Bounds.X, 0, e.Bounds.Width, e.Bounds.Height));
+                new Rectangle(e.Bounds.X, 0, e.Bounds.Width, e.Bounds.Height));
             e.Graphics.DrawString(e.Header.Text, e.Font, new SolidBrush(foreColor), e.Bounds);
         }
         private static void BodyDraw(object sender, DrawListViewItemEventArgs e)
@@ -69,11 +69,11 @@ namespace TurtleWallet
             e.DrawDefault = true;
         }
 
-        public wallet(string _wallet, string _pass, System.Diagnostics.Process wd)
+        public Wallet(string _wallet, string _pass, System.Diagnostics.Process wd)
         {
             InitializeComponent();
             runningDaemon = wd;
-            wallet.ColorListViewHeader(ref txList, Color.FromArgb(29, 29, 29), Color.FromArgb(187, 186, 185));
+            Wallet.ColorListViewHeader(ref txList, Color.FromArgb(29, 29, 29), Color.FromArgb(187, 186, 185));
             _selectedTab = homeButton;
             WalletPath = _wallet;
             WalletPassword = _pass;
@@ -116,7 +116,7 @@ namespace TurtleWallet
             try
             {
                 var jobj = ConnectionManager.Get_live_stats();
-                if(jobj.Item1 == false)
+                if (jobj.Item1 == false)
                 {
                     this.heightAmountLabel.BeginInvoke((MethodInvoker)delegate () { heightAmountLabel.Text = "N/A"; });
                     this.difficultyAmountLabel.BeginInvoke((MethodInvoker)delegate () { difficultyAmountLabel.Text = "N/A"; });
@@ -133,24 +133,32 @@ namespace TurtleWallet
                     });
                     return;
                 }
+
                 var stats = (Newtonsoft.Json.Linq.JObject)jobj.Item2["network"];
-                if(stats.ContainsKey("difficulty"))
+                if (stats.ContainsKey("difficulty"))
+                {
                     this.difficultyAmountLabel.BeginInvoke((MethodInvoker)delegate () { difficultyAmountLabel.Text = stats["difficulty"].ToString(); });
+                }
                 else
                 {
                     this.difficultyAmountLabel.BeginInvoke((MethodInvoker)delegate () { difficultyAmountLabel.Text = "N/A"; });
                 }
+
                 if (stats.ContainsKey("height"))
+                {
                     this.heightAmountLabel.BeginInvoke((MethodInvoker)delegate () { heightAmountLabel.Text = stats["height"].ToString(); });
+                }
                 else
                 {
                     this.heightAmountLabel.BeginInvoke((MethodInvoker)delegate () { heightAmountLabel.Text = "N/A"; });
                 }
+
                 this.updateLabel.BeginInvoke((MethodInvoker)delegate ()
                 {
                     updateLabel.Text = "Updated livestats ...";
                     updateLabel.ForeColor = Color.FromArgb(0, 192, 0);
                 });
+
                 System.Threading.Thread.Sleep(2000);
                 this.updateLabel.BeginInvoke((MethodInvoker)delegate ()
                 {
@@ -189,6 +197,7 @@ namespace TurtleWallet
             globalRefreshCount++;
             Newtonsoft.Json.Linq.JObject status = null;
             Newtonsoft.Json.Linq.JToken blocks = null;
+
             try
             {
                 this.updateLabel.BeginInvoke((MethodInvoker)delegate ()
@@ -196,13 +205,16 @@ namespace TurtleWallet
                     updateLabel.Text = "Syncing Network ...";
                     updateLabel.ForeColor = Color.FromArgb(255, 128, 0);
                 });
+
                 var balances = ConnectionManager.Request("getBalance");
                 if (balances.Item1 == false)
                 {
                     throw new Exception("getBalance call failed: " + balances.Item2);
                 }
+
                 float availableBal = (float)(balances.Item3["availableBalance"]) / 100;
                 float lockedBal = (float)(balances.Item3["lockedAmount"]) / 100;
+
                 this.availableAmountLabel.BeginInvoke((MethodInvoker)delegate () { this.availableAmountLabel.Text = availableBal.ToString("0.00") + " TRTL"; });
                 this.lockedAmountLabel.BeginInvoke((MethodInvoker)delegate () { this.lockedAmountLabel.Text = lockedBal.ToString("0.00") + " TRTL"; });
 
@@ -211,6 +223,7 @@ namespace TurtleWallet
                 {
                     throw new Exception("getAddresses call failed: " + balances.Item2);
                 }
+
                 var addressList = Addresses.Item3["addresses"];
                 this.myAddressText.BeginInvoke((MethodInvoker)delegate () { myAddressText.Text = addressList[0].ToString(); });
 
@@ -221,11 +234,13 @@ namespace TurtleWallet
                     { "firstBlockIndex", 1 },
                     { "addresses", addressList }
                 };
+
                 var blocksRet = ConnectionManager.Request("getTransactions", parameters);
                 if (blocksRet.Item1 == false)
                 {
                     throw new Exception("getTransactions call failed: " + balances.Item2);
                 }
+
                 blocks = blocksRet.Item3["items"];
                 currentTimeout = 0;
                 currentTry = 0;
@@ -238,6 +253,7 @@ namespace TurtleWallet
                     windowLogger.Log(LogTextbox, "Daemon error, retrying ...");
                     updateLabel.ForeColor = Color.FromArgb(205, 12, 47);
                 });
+
                 if (currentTimeout >= watchdogTimeout)
                 {
                     if (currentTry <= watchdogMaxTry)
@@ -252,21 +268,27 @@ namespace TurtleWallet
                     }
                 }
                 else
+                {
                     currentTimeout++;
+                }
+
                 return;
             }
+
             if (blocks == null)
                 return;
+
             bool _trxFound = false;
             foreach(var block in blocks.Reverse())
             {
                 var bblock = (Newtonsoft.Json.Linq.JObject)block;
-                if(bblock.ContainsKey("transactions"))
+                if (bblock.ContainsKey("transactions"))
                 {
-                    foreach(var transaction in block["transactions"])
+                    foreach (var transaction in block["transactions"])
                     {
                         if (cachedTrx.Contains(transaction["transactionHash"].ToString()))
                             continue;
+
                         string address = "";
                         float desired_transfer_amount = 0;
                         if ((float)transaction["amount"] < 0)
@@ -278,9 +300,9 @@ namespace TurtleWallet
                             desired_transfer_amount = ((float)transaction["amount"]);
                         }
 
-                        foreach(var transfer in transaction["transfers"])
+                        foreach (var transfer in transaction["transfers"])
                         {
-                            if((float)transfer["amount"] == desired_transfer_amount)
+                            if ((float)transfer["amount"] == desired_transfer_amount)
                             {
                                 address = transfer["address"].ToString();
                             }
@@ -288,7 +310,7 @@ namespace TurtleWallet
 
                         List<ListViewItem.ListViewSubItem> subitems = new List<ListViewItem.ListViewSubItem>();
 
-                        if((long)transaction["unlockTime"] == 0 || (long)transaction["unlockTime"] <= (long)status["blockCount"] - 40)
+                        if ((long)transaction["unlockTime"] == 0 || (long)transaction["unlockTime"] <= (long)status["blockCount"] - 40)
                         {
                             var confirmItem = new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "  🐢  ✔", System.Drawing.Color.Green, System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29))))), new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                             subitems.Add(confirmItem);
@@ -299,7 +321,7 @@ namespace TurtleWallet
                             subitems.Add(confirmItem);
                         }
 
-                        if((float)transaction["amount"] > 0)
+                        if ((float)transaction["amount"] > 0)
                         {
                             var directionItem = new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "IN\u2007\u2007⇚\u2007\u2007\u2007", System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0))))), System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29))))), new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                             subitems.Add(directionItem);
@@ -326,14 +348,19 @@ namespace TurtleWallet
                         {
                             UseItemStyleForSubItems = false
                         };
+
                         if (globalRefreshCount > 1)
+                        {
                             txList.BeginInvoke((MethodInvoker)delegate ()
                             {
                                 txList.Items.Insert(0, trxItem);
                             });
+                        }
                         else
+                        {
                             firstRunTrx.Add(trxItem);
-                                //txList.Items.Add(trxItem);
+                        }
+                                
                         cachedTrx.Add(transaction["transactionHash"].ToString());
                         _trxFound = true;
                         windowLogger.Log(LogTextbox, "Found transaction " + transaction["transactionHash"].ToString() + ". Added to list ...");
@@ -348,6 +375,7 @@ namespace TurtleWallet
                     txList.Items.AddRange(firstRunTrx.ToArray());
                 });
             }
+
             if (_trxFound)
             {
                 foreach (ColumnHeader column in txList.Columns)
@@ -355,6 +383,7 @@ namespace TurtleWallet
                     column.Width = -2;
                 }
             }
+
             string titleUpdate = "TurtleCoin Wallet - Network Sync [" + status["blockCount"].ToString() + " / " + status["knownBlockCount"].ToString() + "] | Peers: " + status["peerCount"].ToString() + " | Updated: " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss tt");
             this.BeginInvoke((MethodInvoker)delegate ()
             {
@@ -591,8 +620,9 @@ namespace TurtleWallet
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             string myAddr = myAddressText.Text;
-            if(sendAddr == myAddr)
+            if (sendAddr == myAddr)
             {
                 MessageBox.Show("Sending to yourself is not supported.", "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -600,7 +630,7 @@ namespace TurtleWallet
             try
             {
                 amount = (int)(sendAmountText.Value * 100);
-                if(amount <= 0)
+                if (amount <= 0)
                 {
                     MessageBox.Show("Invalid send amount.", "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -611,7 +641,6 @@ namespace TurtleWallet
                 MessageBox.Show("Invalid send amount.", "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
 
             if (feeComboBox.SelectedIndex == 0)
                 fee = Percent(amount, 0.005);
@@ -628,7 +657,7 @@ namespace TurtleWallet
             int mixins = (int)mixinNumeric.Value;
 
             List<int> TransactionAmounts = new List<int>();
-            if(amount > 50000000)
+            if (amount > 50000000)
             {
                 int wholeTrxs = (int)Math.Floor(amount / (double)50000000);
                 int diff = amount - (wholeTrxs * 50000000);
@@ -642,6 +671,7 @@ namespace TurtleWallet
             {
                 TransactionAmounts.Add(amount);
             }
+
             var transfers = new List<Dictionary<string, object>>();
             foreach (var Tamount in TransactionAmounts)
             {
@@ -659,12 +689,13 @@ namespace TurtleWallet
             try
             {
                 var resp = ConnectionManager.Request("sendTransaction", args);
-                if(resp.Item1 == false)
+                if (resp.Item1 == false)
                 {
                     MessageBox.Show("Error occured on send:" + Environment.NewLine + resp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     windowLogger.Log(LogTextbox, "Error occured on send:" + Environment.NewLine + resp.Item2);
                     return;
                 }
+
                 string txhash = resp.Item3["transactionHash"].ToString();
                 MessageBox.Show("Transaction send was successful!" + Environment.NewLine + "Amount: " + ((float)amount / 100).ToString() + Environment.NewLine + "Mix: " + mixins.ToString() + Environment.NewLine + "To: " + sendAddr + Environment.NewLine + "Trx hash: " + txhash, "TurtleCoin Wallet", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 windowLogger.Log(LogTextbox, "Transaction send was successful!" + Environment.NewLine + "Amount: " + ((float)amount / 100).ToString() + Environment.NewLine + "Mix: " + mixins.ToString() + Environment.NewLine + "To: " + sendAddr + Environment.NewLine + "Trx hash: " + txhash);
@@ -674,22 +705,22 @@ namespace TurtleWallet
                 MessageBox.Show("Error occured on send:" + Environment.NewLine + ex.Message, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 windowLogger.Log(LogTextbox, "Error occured on send:" + Environment.NewLine + ex.Message);
             }
-
-
         }
 
         private void SendRPCButton_Click(object sender, EventArgs e)
         {
-            if(methodTextbox.Text == "")
+            if (methodTextbox.Text == "")
             {
                 MessageBox.Show("Invalid method on RPC send", "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             if (argTextbox.Text == "")
             {
                 MessageBox.Show("Invalid argument on RPC send. If there are no arguments, use '{}'.", "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
                 var req = ConnectionManager._requestRPC(methodTextbox.Text, argTextbox.Text);
@@ -749,7 +780,7 @@ namespace TurtleWallet
 
         private void SendAmountText_ValueChanged(object sender, EventArgs e)
         {
-            if(sendAmountText.Value <= 100000)
+            if (sendAmountText.Value <= 100000)
             {
                 mixinNumeric.Value = 3;
                 feeComboBox.SelectedIndex = 0;
@@ -801,12 +832,13 @@ namespace TurtleWallet
 
         private void BackupSubmitbutton_Click(object sender, EventArgs e)
         {
-            if(backupPasswordText.Text == "")
+            if (backupPasswordText.Text == "")
             {
                 MessageBox.Show("Please enter a valid password.", "TurtleCoin Wallet");
                 return;
             }
-            if(backupPasswordText.Text != WalletPassword)
+
+            if (backupPasswordText.Text != WalletPassword)
             {
                 MessageBox.Show("Incorrect password!", "TurtleCoin Wallet");
                 return;
@@ -875,8 +907,9 @@ namespace TurtleWallet
                     MessageBox.Show("Error occured trying to save the wallet state:" + Environment.NewLine + saveresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch { }
-            
+            catch
+            {
+            }            
         }
 
         private void SaverWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

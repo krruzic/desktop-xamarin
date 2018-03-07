@@ -26,9 +26,12 @@ namespace TurtleWallet
                 { "params", args },
                 { "id", rpcID.ToString() }
             };
+
             string payloadJSON = JsonConvert.SerializeObject(payload, Formatting.Indented);
             rpcID++;
+
             System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
             var cli = new TurtleClient();
             cli.Headers[HttpRequestHeader.ContentType] = "application/json";
             string response = cli.UploadString(builtURL, payloadJSON);
@@ -38,6 +41,7 @@ namespace TurtleWallet
             {
                 throw new Exception("Walletd RPC failed with error: " + Convert.ToInt32(jobj["error"]["code"]).ToString() + "  " + jobj["error"]["message"]);
             }
+
             return (JObject)jobj["result"];
         }
 
@@ -53,18 +57,21 @@ namespace TurtleWallet
                 { "params", args_dict },
                 { "id", rpcID.ToString() }
             };
+
             string payloadJSON = JsonConvert.SerializeObject(payload, Formatting.Indented);
             rpcID++;
 
             var cli = new WebClient();
             cli.Headers[HttpRequestHeader.ContentType] = "application/json";
             string response = cli.UploadString(builtURL, payloadJSON);
+
             return response;
         }
 
         public static Tuple<bool,string,JObject> Request(string method, Dictionary<string, object> args = null)
         {
             if (args == null) args = new Dictionary<string, object>() { };
+
             try
             {
                 var results = _request(method, args);
@@ -132,6 +139,7 @@ namespace TurtleWallet
             string pool_eu = "http://eu.turtlepool.space:8117/live_stats";
             string pool_us = "https://pool.turtleco.in/api/live_stats";
             string content = "";
+
             try
             {
                 var cli = new DecompressClient();
@@ -139,6 +147,7 @@ namespace TurtleWallet
                 content = cli.DownloadString(pool_eu);
             }
             catch (Exception) { }
+
             if (content == "")
             {
                 try
@@ -149,6 +158,7 @@ namespace TurtleWallet
                 }
                 catch (Exception) { }
             }
+
             if (content == "")
             {
                 return Tuple.Create<bool, JObject>(false, null);
