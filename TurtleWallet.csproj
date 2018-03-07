@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>green_turtle_shield_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\green_turtle_shield_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -110,12 +110,12 @@
     <Compile Include="ImportWalletPrompt.Designer.cs">
       <DependentUpon>ImportWalletPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="logging.cs" />
-    <Compile Include="passwordPrompt.cs">
+    <Compile Include="Logging.cs" />
+    <Compile Include="PasswordPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="passwordPrompt.Designer.cs">
-      <DependentUpon>passwordPrompt.cs</DependentUpon>
+    <Compile Include="PasswordPrompt.Designer.cs">
+      <DependentUpon>PasswordPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="SelectionPrompt.cs">
       <SubType>Form</SubType>
@@ -131,34 +131,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="updatePrompt.cs">
+    <Compile Include="TurtleWalletForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="updatePrompt.Designer.cs">
-      <DependentUpon>updatePrompt.cs</DependentUpon>
+    <Compile Include="UpdatePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePrompt.Designer.cs">
+      <DependentUpon>UpdatePrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
-    <Compile Include="wallet.cs">
+    <Compile Include="Wallet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="wallet.Designer.cs">
-      <DependentUpon>wallet.cs</DependentUpon>
+    <Compile Include="Wallet.Designer.cs">
+      <DependentUpon>Wallet.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateWalletKeyPrompt.resx">
-      <DependentUpon>CreateWalletKeyPrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateWalletPrompt.resx">
-      <DependentUpon>CreateWalletPrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ImportWalletPrompt.resx">
-      <DependentUpon>ImportWalletPrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="passwordPrompt.resx">
-      <DependentUpon>passwordPrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SelectionPrompt.resx">
-      <DependentUpon>SelectionPrompt.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -169,14 +157,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Splash.resx">
-      <DependentUpon>Splash.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="updatePrompt.resx">
-      <DependentUpon>updatePrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wallet.resx">
-      <DependentUpon>wallet.cs</DependentUpon>
+    <EmbeddedResource Include="Wallet.resx">
+      <DependentUpon>Wallet.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -190,11 +172,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="green_turtle_shield.ico" />
-    <Content Include="green_turtle_shield_icon.ico" />
+    <Content Include="Resources\green_turtle_shield.png" />
+    <Content Include="Resources\green_turtle_shield_icon.ico" />
     <None Include="Resources\trtls.png" />
     <None Include="Resources\back.png" />
   </ItemGroup>

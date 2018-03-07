@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class SelectionPrompt : Form
+    public partial class SelectionPrompt : TurtleWalletForm
     {
         public string WalletPath
         {
@@ -110,7 +110,7 @@ namespace TurtleWallet
             CreateWalletPrompt CWP = new CreateWalletPrompt();
             Utilities.Hide(this);
             var CWPreturn = CWP.ShowDialog();
-            if(CWPreturn == DialogResult.OK)
+            if (CWPreturn == DialogResult.OK)
             {
                 WalletPath = CWP.WalletPath;
                 WalletPassword = CWP.WalletPassword;
@@ -126,7 +126,7 @@ namespace TurtleWallet
             ImportWalletPrompt IWP = new ImportWalletPrompt();
             Utilities.Hide(this);
             var IWPreturn = IWP.ShowDialog();
-            if(IWPreturn == DialogResult.OK)
+            if (IWPreturn == DialogResult.OK)
             {
                 WalletPath = IWP.ImportWalletPath;
                 WalletPassword = IWP.ImportWalletPassword;
@@ -150,13 +150,14 @@ namespace TurtleWallet
 
             if (findWalletDialog.ShowDialog() == DialogResult.OK)
             {
-                if(System.IO.File.Exists(findWalletDialog.FileName))
+                if (System.IO.File.Exists(findWalletDialog.FileName))
                 {
                     WalletPath = findWalletDialog.FileName;
-                    var pPrompt = new passwordPrompt();
+                    var pPrompt = new PasswordPrompt();
                     Utilities.Hide(this);
+
                     var pResult = pPrompt.ShowDialog();
-                    if(pResult != DialogResult.OK)
+                    if (pResult != DialogResult.OK)
                     {
                         findWalletDialog.Dispose();
                         Utilities.Close(pPrompt);

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class CreateWalletPrompt : Form
+    public partial class CreateWalletPrompt : TurtleWalletForm
     {
         public string WalletPath
         {

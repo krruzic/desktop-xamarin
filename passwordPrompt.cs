@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class passwordPrompt : Form
+    public partial class PasswordPrompt : TurtleWalletForm
     {
         public string WalletPassword
         {
@@ -18,10 +18,13 @@ namespace TurtleWallet
             set;
         }
 
-        public passwordPrompt()
+        public PasswordPrompt()
         {
             InitializeComponent();
+
             this.Text = "Turtle Wallet";
+
+            walletPasswordLabel.Text = String.Format("{0} Wallet Password:", System.IO.Path.GetFileNameWithoutExtension(Properties.Settings.Default.walletPath));
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

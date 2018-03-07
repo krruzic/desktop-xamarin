@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class Splash : Form
+    public partial class Splash : TurtleWalletForm
     {
         public string WalletPath
         {
@@ -110,12 +110,16 @@ namespace TurtleWallet
                                 string linecache = sr.ReadLine();
                                 if (String.IsNullOrWhiteSpace(linecache))
                                     break;
+
                                 lastLine = linecache;
+
                                 if (globalLastline == lastLine)
                                     lineWasUpdated = false;
                                 else
                                     lineWasUpdated = true;
+
                                 globalLastline = linecache;
+
                                 if (lastLine.Contains("The password is wrong") || lastLine.Contains("Restored view public key doesn't correspond to secret key"))
                                 {
                                     try
@@ -123,7 +127,10 @@ namespace TurtleWallet
                                         connReturn.Item3.CancelOutputRead();
                                         connReturn.Item3.Kill();
                                     }
-                                    catch { }
+                                    catch
+                                    {
+                                    }
+
                                     MessageBox.Show("The password is incorrect!", "TurtleCoin Wallet");
                                     //will restart at selection screen instead of exiting
                                     Program.jumpBack = true;
@@ -149,20 +156,23 @@ namespace TurtleWallet
                         {
                             throw new Exception("Daemon exited!");
                         }
+
                         var resp = ConnectionManager.Request("getStatus");
                         if (resp.Item1 == false)
                         {
                             throw new Exception("No RPC connection/Failed");
                         }
+
                         var block_count = (int)resp.Item3["blockCount"];
                         var known_block_count = (int)resp.Item3["knownBlockCount"];
-                        if(known_block_count == 0)
+                        if (known_block_count == 0)
                         {
                             this.StatusLabel.BeginInvoke((MethodInvoker)delegate () { this.StatusLabel.Text = "Waiting on known block count..." ; });
                             continue;
                         }
+
                         this.StatusLabel.BeginInvoke((MethodInvoker)delegate () { this.StatusLabel.Text = "Syncing... [" + block_count.ToString() + " / " + known_block_count.ToString() + "]"; });
-                        if(known_block_count > 0 && (block_count >= known_block_count - 1))
+                        if (known_block_count > 0 && (block_count >= known_block_count - 1))
                         {
                             this.StatusLabel.BeginInvoke((MethodInvoker)delegate () { this.StatusLabel.Text = "Wallet is synced, opening..."; });
                             e.Result = connReturn.Item3;
@@ -214,7 +224,7 @@ namespace TurtleWallet
             else
             {
                 Utilities.Hide(this);
-                var walletWindow = new wallet(WalletPath, WalletPassword, (Process)e.Result);
+                var walletWindow = new Wallet(WalletPath, WalletPassword, (Process)e.Result);
                 walletWindow.Closed += (s, args) => Utilities.Close(this);
                 walletWindow.Show();
             }

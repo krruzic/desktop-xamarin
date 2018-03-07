@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Splash));
             this.panel1 = new System.Windows.Forms.Panel();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.versionLabel = new System.Windows.Forms.Label();
@@ -197,11 +196,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.splashDrop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Splash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "TurtleCoin Wallet";
             this.Load += new System.EventHandler(this.Splash_Load);
             this.panel1.ResumeLayout(false);
             this.splashDrop.ResumeLayout(false);

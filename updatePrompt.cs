@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace TurtleWallet
 {
-    public partial class UpdatePrompt : Form
+    public partial class UpdatePrompt : TurtleWalletForm
     {
         public UpdatePrompt()
         {

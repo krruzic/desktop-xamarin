@@ -1,6 +1,6 @@
 ﻿namespace TurtleWallet
 {
-    partial class wallet
+    partial class Wallet
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(wallet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wallet));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -68,7 +68,7 @@
             this.copyAddressButton = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.walletTabControl = new System.Windows.Forms.TabControl();
+            this.walletTabControl = new TurtleWallet.NoBorderTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -2012,7 +2012,6 @@
             this.ClientSize = new System.Drawing.Size(771, 400);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "wallet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2135,7 +2134,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel3;
 #if DEBUG
-        private System.Windows.Forms.TabControl walletTabControl;
+        private TurtleWallet.NoBorderTabControl walletTabControl;
 #else
         private TurtleWallet.NoBorderTabControl walletTabControl;
 #endif
