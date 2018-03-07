@@ -1,4 +1,4 @@
-﻿namespace TurtleWallet
+namespace TurtleWallet
 {
     partial class SelectionPrompt
     {
@@ -33,10 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.importWalletButton = new System.Windows.Forms.Label();
             this.selectWalletButton = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.createWalletButton = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -51,9 +52,9 @@
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 162);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(448, 238);
+            this.panel1.Size = new System.Drawing.Size(448, 269);
             this.panel1.TabIndex = 1;
             // 
             // label2
@@ -89,20 +90,52 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.importWalletButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.selectWalletButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.createWalletButton, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 124);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 112);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(448, 114);
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.0132F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.980198F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.0132F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.980198F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.0132F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(448, 157);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(19, 52);
+            this.panel3.Margin = new System.Windows.Forms.Padding(19, 2, 19, 2);
+            this.panel3.Name = "panel2";
+            this.panel3.Size = new System.Drawing.Size(410, 1);
+            this.panel3.TabIndex = 0;
+            // 
+            // importWalletButton
+            // 
+            this.importWalletButton.AutoSize = true;
+            this.importWalletButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.importWalletButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.importWalletButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.importWalletButton.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.importWalletButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.importWalletButton.Location = new System.Drawing.Point(2, 106);
+            this.importWalletButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.importWalletButton.Name = "importWalletButton";
+            this.importWalletButton.Size = new System.Drawing.Size(444, 51);
+            this.importWalletButton.TabIndex = 2;
+            this.importWalletButton.Text = "Import Wallet";
+            this.importWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.importWalletButton.Click += new System.EventHandler(this.ImportWalletButton_Click);
+            this.importWalletButton.MouseEnter += new System.EventHandler(this.ImportWalletButton_MouseEnter);
+            this.importWalletButton.MouseLeave += new System.EventHandler(this.ImportWalletButton_MouseLeave);
             // 
             // selectWalletButton
             // 
@@ -112,10 +145,10 @@
             this.selectWalletButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectWalletButton.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectWalletButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.selectWalletButton.Location = new System.Drawing.Point(2, 58);
+            this.selectWalletButton.Location = new System.Drawing.Point(2, 53);
             this.selectWalletButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.selectWalletButton.Name = "selectWalletButton";
-            this.selectWalletButton.Size = new System.Drawing.Size(444, 56);
+            this.selectWalletButton.Size = new System.Drawing.Size(444, 50);
             this.selectWalletButton.TabIndex = 1;
             this.selectWalletButton.Text = "Select Existing Wallet";
             this.selectWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,11 +158,9 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(170)))), ((int)(((byte)(107)))));
-            this.panel2.Location = new System.Drawing.Point(19, 57);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(19, 52);
             this.panel2.Margin = new System.Windows.Forms.Padding(19, 2, 19, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(410, 1);
@@ -146,7 +177,7 @@
             this.createWalletButton.Location = new System.Drawing.Point(2, 0);
             this.createWalletButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.createWalletButton.Name = "createWalletButton";
-            this.createWalletButton.Size = new System.Drawing.Size(444, 55);
+            this.createWalletButton.Size = new System.Drawing.Size(444, 50);
             this.createWalletButton.TabIndex = 0;
             this.createWalletButton.Text = "Create Wallet";
             this.createWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -154,31 +185,13 @@
             this.createWalletButton.MouseEnter += new System.EventHandler(this.CreateWalletButton_MouseEnter);
             this.createWalletButton.MouseLeave += new System.EventHandler(this.CreateWalletButton_MouseLeave);
             // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.AutoSize = true;
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(422, 3);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(23, 24);
-            this.exitButton.TabIndex = 2;
-            this.exitButton.Text = "✘";
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            this.exitButton.MouseEnter += new System.EventHandler(this.ExitButton_MouseEnter);
-            this.exitButton.MouseLeave += new System.EventHandler(this.ExitButton_MouseLeave);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::TurtleWallet.Properties.Resources.trtl_banner;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(448, 162);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -189,13 +202,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 400);
-            this.Controls.Add(this.exitButton);
+            this.ClientSize = new System.Drawing.Size(448, 431);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SelectionPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TurtleCoin Wallet";
@@ -204,7 +216,6 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -216,8 +227,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label selectWalletButton;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label createWalletButton;
-        private System.Windows.Forms.Label exitButton;
+        private System.Windows.Forms.Label importWalletButton;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

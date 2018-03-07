@@ -2017,7 +2017,6 @@
             this.Name = "wallet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TurtleCoin Wallet";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Wallet_FormClosing);
             this.Load += new System.EventHandler(this.Wallet_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

@@ -41,7 +41,6 @@
             this.buttonsTable = new System.Windows.Forms.TableLayoutPanel();
             this.cancelButton = new System.Windows.Forms.Label();
             this.createWalletButton = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Label();
             this.passwordLogo = new System.Windows.Forms.PictureBox();
             this.createMainPanel.SuspendLayout();
             this.createMainTable.SuspendLayout();
@@ -62,7 +61,7 @@
             this.createMainPanel.Location = new System.Drawing.Point(0, 162);
             this.createMainPanel.Margin = new System.Windows.Forms.Padding(2);
             this.createMainPanel.Name = "createMainPanel";
-            this.createMainPanel.Size = new System.Drawing.Size(448, 174);
+            this.createMainPanel.Size = new System.Drawing.Size(500, 174);
             this.createMainPanel.TabIndex = 1;
             // 
             // walletPasswordLabel
@@ -74,7 +73,7 @@
             this.walletPasswordLabel.Location = new System.Drawing.Point(0, 46);
             this.walletPasswordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.walletPasswordLabel.Name = "walletPasswordLabel";
-            this.walletPasswordLabel.Size = new System.Drawing.Size(448, 32);
+            this.walletPasswordLabel.Size = new System.Drawing.Size(500, 32);
             this.walletPasswordLabel.TabIndex = 98;
             this.walletPasswordLabel.Text = "Wallet Password:";
             this.walletPasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,7 +87,7 @@
             this.welcomeLabel.Location = new System.Drawing.Point(0, 0);
             this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(448, 46);
+            this.welcomeLabel.Size = new System.Drawing.Size(500, 46);
             this.welcomeLabel.TabIndex = 97;
             this.welcomeLabel.Text = "Welcome to Turtle Wallet";
             this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,7 +108,7 @@
             this.createMainTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.97561F));
             this.createMainTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.createMainTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.createMainTable.Size = new System.Drawing.Size(448, 95);
+            this.createMainTable.Size = new System.Drawing.Size(500, 95);
             this.createMainTable.TabIndex = 0;
             // 
             // passwordConfirmTable
@@ -132,7 +131,7 @@
             // 
             this.panel1.Controls.Add(this.passwordText);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(100, 3);
+            this.panel1.Location = new System.Drawing.Point(150, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(341, 27);
             this.panel1.TabIndex = 100;
@@ -146,7 +145,7 @@
             this.passwordText.ForeColor = System.Drawing.Color.White;
             this.passwordText.Location = new System.Drawing.Point(0, 0);
             this.passwordText.Margin = new System.Windows.Forms.Padding(2);
-            this.passwordText.MaxLength = 24;
+            this.passwordText.MaxLength = 150;
             this.passwordText.Name = "passwordText";
             this.passwordText.Size = new System.Drawing.Size(341, 29);
             this.passwordText.TabIndex = 1;
@@ -159,7 +158,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(91, 27);
+            this.panel2.Size = new System.Drawing.Size(150, 27);
             this.panel2.TabIndex = 101;
             // 
             // passwordLabel
@@ -171,7 +170,7 @@
             this.passwordLabel.Location = new System.Drawing.Point(0, 0);
             this.passwordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(91, 27);
+            this.passwordLabel.Size = new System.Drawing.Size(150, 27);
             this.passwordLabel.TabIndex = 100;
             this.passwordLabel.Text = "Password:";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -231,24 +230,6 @@
             this.createWalletButton.MouseEnter += new System.EventHandler(this.CreateWalletButton_MouseEnter);
             this.createWalletButton.MouseLeave += new System.EventHandler(this.CreateWalletButton_MouseLeave);
             // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.AutoSize = true;
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(422, 2);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(23, 24);
-            this.exitButton.TabIndex = 3;
-            this.exitButton.Text = "✘";
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            this.exitButton.MouseEnter += new System.EventHandler(this.ExitButton_MouseEnter);
-            this.exitButton.MouseLeave += new System.EventHandler(this.ExitButton_MouseLeave);
-            // 
             // passwordLogo
             // 
             this.passwordLogo.BackgroundImage = global::TurtleWallet.Properties.Resources.trtl_banner;
@@ -257,7 +238,7 @@
             this.passwordLogo.Location = new System.Drawing.Point(0, 0);
             this.passwordLogo.Margin = new System.Windows.Forms.Padding(0);
             this.passwordLogo.Name = "passwordLogo";
-            this.passwordLogo.Size = new System.Drawing.Size(448, 162);
+            this.passwordLogo.Size = new System.Drawing.Size(500, 162);
             this.passwordLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.passwordLogo.TabIndex = 0;
             this.passwordLogo.TabStop = false;
@@ -266,11 +247,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 336);
-            this.Controls.Add(this.exitButton);
+            this.ClientSize = new System.Drawing.Size(500, 336);
             this.Controls.Add(this.createMainPanel);
             this.Controls.Add(this.passwordLogo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "passwordPrompt";
@@ -301,7 +281,6 @@
         private System.Windows.Forms.Label createWalletButton;
         private System.Windows.Forms.TableLayoutPanel buttonsTable;
         private System.Windows.Forms.TableLayoutPanel passwordConfirmTable;
-        private System.Windows.Forms.Label exitButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox passwordText;
         private System.Windows.Forms.Panel panel2;

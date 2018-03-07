@@ -116,7 +116,7 @@
             this.ClientSize = new System.Drawing.Size(448, 261);
             this.Controls.Add(this.updateMainPanel);
             this.Controls.Add(this.updateLogo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UpdatePrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

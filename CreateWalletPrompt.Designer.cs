@@ -39,7 +39,6 @@
             this.cancelButton = new System.Windows.Forms.Label();
             this.createWalletButton = new System.Windows.Forms.Label();
             this.walletNameTable = new System.Windows.Forms.TableLayoutPanel();
-            this.exitButton = new System.Windows.Forms.Label();
             this.createLogo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.walletNameLabel = new System.Windows.Forms.Label();
@@ -247,24 +246,6 @@
             this.walletNameTable.Size = new System.Drawing.Size(444, 31);
             this.walletNameTable.TabIndex = 4;
             // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.AutoSize = true;
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(422, 2);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(23, 24);
-            this.exitButton.TabIndex = 2;
-            this.exitButton.Text = "✘";
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            this.exitButton.MouseEnter += new System.EventHandler(this.ExitButton_MouseEnter);
-            this.exitButton.MouseLeave += new System.EventHandler(this.ExitButton_MouseLeave);
-            // 
             // createLogo
             // 
             this.createLogo.BackgroundImage = global::TurtleWallet.Properties.Resources.trtl_banner;
@@ -362,7 +343,7 @@
             this.passwordText.ForeColor = System.Drawing.Color.White;
             this.passwordText.Location = new System.Drawing.Point(0, 0);
             this.passwordText.Margin = new System.Windows.Forms.Padding(2);
-            this.passwordText.MaxLength = 150;
+            this.passwordText.MaxLength = 151;
             this.passwordText.Name = "passwordText";
             this.passwordText.Size = new System.Drawing.Size(261, 29);
             this.passwordText.TabIndex = 6;
@@ -419,10 +400,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 400);
-            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.createMainPanel);
             this.Controls.Add(this.createLogo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateWalletPrompt";
@@ -464,7 +444,6 @@
         private System.Windows.Forms.TableLayoutPanel passwordConfirmTable;
         private System.Windows.Forms.TableLayoutPanel passwordTable;
         private System.Windows.Forms.TableLayoutPanel walletNameTable;
-        private System.Windows.Forms.Label exitButton;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Panel panel4;
