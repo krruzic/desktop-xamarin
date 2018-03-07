@@ -21,7 +21,10 @@ namespace TurtleWallet
         public PasswordPrompt()
         {
             InitializeComponent();
+
             this.Text = "Turtle Wallet";
+
+            walletPasswordLabel.Text = String.Format("{0} Wallet Password:", System.IO.Path.GetFileNameWithoutExtension(Properties.Settings.Default.walletPath));
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

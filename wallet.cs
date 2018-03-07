@@ -85,6 +85,8 @@ namespace TurtleWallet
             windowLogger = new WindowLogger();
             walletTabControl.SelectedIndex = 0;
             feeComboBox.SelectedIndex = 0;
+
+            label13.Text = String.Format("{0} BALANCE:", System.IO.Path.GetFileNameWithoutExtension(Properties.Settings.Default.walletPath));
         }
 
         private void Wallet_Load(object sender, EventArgs e)
