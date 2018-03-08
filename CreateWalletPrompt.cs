@@ -15,7 +15,7 @@ namespace TurtleWallet
         public CreateWalletPrompt()
         {
             InitializeComponent();
-            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            this.Text = Application.ProductName;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

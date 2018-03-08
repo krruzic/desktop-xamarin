@@ -11,7 +11,8 @@ namespace TurtleWallet
         public UpdatePrompt()
         {
             InitializeComponent();
-            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+
+            this.Text = Application.ProductName;
         }
 
         private void UpdatePrompt_Load(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace TurtleWallet
         {
             InitializeComponent();
 
-            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            this.Text = Application.ProductName;
 
             walletPasswordLabel.Text = String.Format("{0} Wallet Password:", System.IO.Path.GetFileNameWithoutExtension(Properties.Settings.Default.walletPath));
         }

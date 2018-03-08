@@ -9,7 +9,7 @@ namespace TurtleWallet
         {
             InitializeComponent();
             KeysTextbox.Text = keyOutput;
-            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            this.Text = Application.ProductName;
         }
 
         private void CreateWalletButton_Click(object sender, EventArgs e)

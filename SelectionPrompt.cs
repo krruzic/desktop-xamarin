@@ -23,7 +23,7 @@ namespace TurtleWallet
         public SelectionPrompt()
         {
             InitializeComponent();
-            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            this.Text = Application.ProductName;
             //if(IsRunningOnMono())
             //{
             //    this.Width = this.Width + 150;

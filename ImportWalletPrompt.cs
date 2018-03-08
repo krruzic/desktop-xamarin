@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TurtleWallet
@@ -21,7 +15,7 @@ namespace TurtleWallet
         public ImportWalletPrompt()
         {
             InitializeComponent();
-            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            this.Text = Application.ProductName;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
