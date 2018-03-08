@@ -35,8 +35,8 @@
             this.passwordConfirmTable = new System.Windows.Forms.TableLayoutPanel();
             this.passwordTable = new System.Windows.Forms.TableLayoutPanel();
             this.buttonsTable = new System.Windows.Forms.TableLayoutPanel();
-            this.cancelButton = new System.Windows.Forms.Label();
-            this.createWalletButton = new System.Windows.Forms.Label();
+            this.cancelButton = new TurtleWalletLabelButton();
+            this.createWalletButton = new TurtleWalletLabelButton();
             this.walletNameTable = new System.Windows.Forms.TableLayoutPanel();
             this.createLogo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -207,8 +207,6 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            this.cancelButton.MouseEnter += new System.EventHandler(this.CancelButton_MouseEnter);
-            this.cancelButton.MouseLeave += new System.EventHandler(this.CancelButton_MouseLeave);
             // 
             // createWalletButton
             // 
@@ -226,8 +224,6 @@
             this.createWalletButton.Text = "Create Wallet";
             this.createWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.createWalletButton.Click += new System.EventHandler(this.CreateWalletButton_Click);
-            this.createWalletButton.MouseEnter += new System.EventHandler(this.CreateWalletButton_MouseEnter);
-            this.createWalletButton.MouseLeave += new System.EventHandler(this.CreateWalletButton_MouseLeave);
             // 
             // walletNameTable
             // 

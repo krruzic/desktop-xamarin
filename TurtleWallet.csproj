@@ -7,7 +7,7 @@
     <ProjectGuid>{E84492A8-BBE9-413F-9979-934387D85F51}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TurtleWallet</RootNamespace>
-    <AssemblyName>TurtleWallet</AssemblyName>
+    <AssemblyName>Turtle Wallet</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -90,6 +90,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TurtleWalletLabelButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="CommandLineEncoder.cs" />
     <Compile Include="CreateWalletKeyPrompt.cs">

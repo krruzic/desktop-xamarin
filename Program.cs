@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace TurtleWallet
 {
@@ -16,13 +12,8 @@ namespace TurtleWallet
         [STAThread]
         static void Main()
         {
-            /* Delete walletd.log if it exists so we can ensure when reading
-               the file later upon a crash, that we are reporting the proper
-               crash reason and not some previous crash */
-            System.IO.File.Delete("walletd.log");
-
 #if DEBUG
-            //Properties.Settings.Default.Reset();
+            Properties.Settings.Default.Reset();
 #endif
 
             if (Environment.OSVersion.Version.Major >= 6)

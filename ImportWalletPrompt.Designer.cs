@@ -1,32 +1,33 @@
 namespace TurtleWallet
 {
-    partial class ImportWalletPrompt { 
+    partial class ImportWalletPrompt
+    { 
        /// <summary>
        /// Required designer variable.
        /// </summary>
-    private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing && (components != null))
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
         {
-            components.Dispose();
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
-        base.Dispose(disposing);
-    }
 
-    #region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent()
-    {
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.importMainPanel = new System.Windows.Forms.Panel();
             this.importLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
@@ -43,8 +44,8 @@ namespace TurtleWallet
             this.panel4 = new System.Windows.Forms.Panel();
             this.passwordText = new System.Windows.Forms.TextBox();
             this.buttonsTable = new System.Windows.Forms.TableLayoutPanel();
-            this.cancelButton = new System.Windows.Forms.Label();
-            this.importWalletButton = new System.Windows.Forms.Label();
+            this.cancelButton = new TurtleWalletLabelButton();
+            this.importWalletButton = new TurtleWalletLabelButton();
             this.walletNameTable = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.walletNameLabel = new System.Windows.Forms.Label();
@@ -318,8 +319,6 @@ namespace TurtleWallet
             this.cancelButton.Text = "Cancel";
             this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            this.cancelButton.MouseEnter += new System.EventHandler(this.CancelButton_MouseEnter);
-            this.cancelButton.MouseLeave += new System.EventHandler(this.CancelButton_MouseLeave);
             // 
             // importWalletButton
             // 
@@ -337,8 +336,6 @@ namespace TurtleWallet
             this.importWalletButton.Text = "Import Wallet";
             this.importWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.importWalletButton.Click += new System.EventHandler(this.ImportWalletButton_Click);
-            this.importWalletButton.MouseEnter += new System.EventHandler(this.ImportWalletButton_MouseEnter);
-            this.importWalletButton.MouseLeave += new System.EventHandler(this.ImportWalletButton_MouseLeave);
             // 
             // walletNameTable
             // 
@@ -574,18 +571,17 @@ namespace TurtleWallet
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.ResumeLayout(false);
+        }
 
-    }
+        #endregion
 
-    #endregion
-
-    private System.Windows.Forms.PictureBox importLogo;
-    private System.Windows.Forms.Panel importMainPanel;
-    private System.Windows.Forms.Label welcomeLabel;
-    private System.Windows.Forms.TableLayoutPanel importMainTable;
-    private System.Windows.Forms.Label importLabel;
-    private System.Windows.Forms.Label cancelButton;
-    private System.Windows.Forms.Label importWalletButton;
+        private System.Windows.Forms.PictureBox importLogo;
+        private System.Windows.Forms.Panel importMainPanel;
+        private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.TableLayoutPanel importMainTable;
+        private System.Windows.Forms.Label importLabel;
+        private TurtleWalletLabelButton cancelButton;
+        private TurtleWalletLabelButton importWalletButton;
         private System.Windows.Forms.ProgressBar importProgressbar;
         private System.Windows.Forms.TableLayoutPanel buttonsTable;
         private System.Windows.Forms.TableLayoutPanel passwordConfirmTable;

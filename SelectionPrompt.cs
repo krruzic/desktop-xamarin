@@ -1,28 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TurtleWallet
 {
     public partial class SelectionPrompt : TurtleWalletForm
     {
-        public string WalletPath
-        {
-            get;
-            set;
-        }
+        public string WalletPath { get; set; }
 
-        public string WalletPassword
-        {
-            get;
-            set;
-        }
+        public string WalletPassword { get; set; }
 
         protected override CreateParams CreateParams
         {
@@ -38,67 +23,13 @@ namespace TurtleWallet
         public SelectionPrompt()
         {
             InitializeComponent();
-            this.Text = "Turtle Wallet";
+            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             //if(IsRunningOnMono())
             //{
             //    this.Width = this.Width + 150;
             //    this.Height = this.Height + 150;
             //}
-        }
-
-        private void CreateWalletButton_MouseEnter(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(44, 44, 44);
-            var forcolor = Color.FromArgb(39, 170, 107);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void CreateWalletButton_MouseLeave(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(52, 52, 52);
-            var forcolor = Color.FromArgb(224, 224, 224);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void SelectWalletButton_MouseEnter(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(44, 44, 44);
-            var forcolor = Color.FromArgb(39, 170, 107);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void SelectWalletButton_MouseLeave(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(52, 52, 52);
-            var forcolor = Color.FromArgb(224, 224, 224);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void ImportWalletButton_MouseEnter(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(44, 44, 44);
-            var forcolor = Color.FromArgb(39, 170, 107);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void ImportWalletButton_MouseLeave(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(52, 52, 52);
-            var forcolor = Color.FromArgb(224, 224, 224);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
+        }        
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {

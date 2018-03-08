@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TurtleWallet
@@ -20,24 +17,15 @@ namespace TurtleWallet
         public static int currentTimeout = 0;
         public static int currentTry = 0;
         public static int staticFee = 10;
-        public static Label _selectedTab;
         public static List<string> cachedTrx = new List<string>();
         public static List<ListViewItem> firstRunTrx = new List<ListViewItem>();
         public static Process runningDaemon;
         public static WindowLogger windowLogger;
         public static int globalRefreshCount = 0;
 
-        public string WalletPath
-        {
-            get;
-            set;
-        }
+        public string WalletPath { get; set; }
 
-        public string WalletPassword
-        {
-            get;
-            set;
-        }
+        public string WalletPassword { get; set; }
 
         //List view header formatters
         public static void ColorListViewHeader(ref ListView list, Color backColor, Color foreColor)
@@ -74,7 +62,6 @@ namespace TurtleWallet
             InitializeComponent();
             runningDaemon = wd;
             Wallet.ColorListViewHeader(ref txList, Color.FromArgb(29, 29, 29), Color.FromArgb(187, 186, 185));
-            _selectedTab = homeButton;
             WalletPath = _wallet;
             WalletPassword = _pass;
             Properties.Settings.Default.walletPath = _wallet;
@@ -392,167 +379,16 @@ namespace TurtleWallet
                 this.Text = titleUpdate;
                 this.Update();
             });
-
-        }
-
-        private void HomeButton_MouseEnter(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(44, 44, 44);
-                var forcolor = Color.FromArgb(39, 170, 107);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void SendButton_MouseEnter(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(44, 44, 44);
-                var forcolor = Color.FromArgb(39, 170, 107);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void LogButton_MouseEnter(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(44, 44, 44);
-                var forcolor = Color.FromArgb(39, 170, 107);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void RpcButton_MouseEnter(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(44, 44, 44);
-                var forcolor = Color.FromArgb(39, 170, 107);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void HomeButton_MouseLeave(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void SendButton_MouseLeave(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void LogButton_MouseLeave(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void RpcButton_MouseLeave(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                currentButton.BackColor = backcolor;
-                currentButton.ForeColor = forcolor;
-            }
-        }
-
-        private void CopyAddressButton_MouseEnter(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            var backcolor = Color.FromArgb(44, 44, 44);
-            var forcolor = Color.FromArgb(39, 170, 107);
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void CopyAddressButton_MouseLeave(object sender, EventArgs e)
-        {
-            var currentButton = (Label)sender;
-            var backcolor = Color.FromArgb(52,52,52);
-            var forcolor = Color.FromArgb(224, 224, 224);
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
+        }        
 
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                viewKeyText.Text = "";
-                spendKeyText.Text = "";
-                backupPasswordText.Text = "";
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-
-                walletTabControl.SelectedIndex = 0;
-                _selectedTab = currentButton;
-
-                backcolor = Color.FromArgb(82, 82, 82);
-                forcolor = Color.FromArgb(39, 170, 107);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-            }
+            walletTabControl.SelectedIndex = 0;
         }
 
         private void SendButton_Click(object sender, EventArgs e)
         {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                viewKeyText.Text = "";
-                spendKeyText.Text = "";
-                backupPasswordText.Text = "";
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-
-                walletTabControl.SelectedIndex = 1;
-                _selectedTab = currentButton;
-
-                backcolor = Color.FromArgb(82,82,82);
-                forcolor = Color.FromArgb(39, 170, 107);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-            }
+            walletTabControl.SelectedIndex = 1;
         }
 
         private void ListView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
@@ -736,48 +572,12 @@ namespace TurtleWallet
 
         private void LogButton_Click(object sender, EventArgs e)
         {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                viewKeyText.Text = "";
-                spendKeyText.Text = "";
-                backupPasswordText.Text = "";
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-
-                walletTabControl.SelectedIndex = 2;
-                _selectedTab = currentButton;
-
-                backcolor = Color.FromArgb(82, 82, 82);
-                forcolor = Color.FromArgb(39, 170, 107);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-            }
+            walletTabControl.SelectedIndex = 2;            
         }
 
         private void RpcButton_Click(object sender, EventArgs e)
         {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                viewKeyText.Text = "";
-                spendKeyText.Text = "";
-                backupPasswordText.Text = "";
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-
-                walletTabControl.SelectedIndex = 3;
-                _selectedTab = currentButton;
-
-                backcolor = Color.FromArgb(82, 82, 82);
-                forcolor = Color.FromArgb(39, 170, 107);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-            }
+            walletTabControl.SelectedIndex = 3;            
         }
 
         private void SendAmountText_ValueChanged(object sender, EventArgs e)
@@ -878,25 +678,7 @@ namespace TurtleWallet
 
         private void BackupButton_Click(object sender, EventArgs e)
         {
-            var currentButton = (Label)sender;
-            if (_selectedTab != currentButton)
-            {
-                viewKeyText.Text = "";
-                spendKeyText.Text = "";
-                backupPasswordText.Text = "";
-                var backcolor = Color.FromArgb(52, 52, 52);
-                var forcolor = Color.FromArgb(224, 224, 224);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-
-                walletTabControl.SelectedIndex = 4;
-                _selectedTab = currentButton;
-
-                backcolor = Color.FromArgb(82, 82, 82);
-                forcolor = Color.FromArgb(39, 170, 107);
-                _selectedTab.BackColor = backcolor;
-                _selectedTab.ForeColor = forcolor;
-            }
+            walletTabControl.SelectedIndex = 4;            
         }
 
         private void SaverWorker_DoWork(object sender, DoWorkEventArgs e)

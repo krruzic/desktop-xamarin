@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TurtleWallet
 {
@@ -77,7 +75,7 @@ namespace TurtleWallet
                 var results = _request(method, args);
                 return Tuple.Create<bool, string, JObject>(true, "", results);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return Tuple.Create<bool,string,JObject>(false, e.Message, null);
             }
@@ -109,6 +107,11 @@ namespace TurtleWallet
                    they don't lock the DB */
                 conflictingProcesses[i].Kill();
             }
+
+            /* Delete walletd.log if it exists so we can ensure when reading
+               the file later upon a crash, that we are reporting the proper
+               crash reason and not some previous crash */
+            System.IO.File.Delete("walletd.log");
 
             Process p = new Process();
             p.StartInfo.CreateNoWindow = true;
