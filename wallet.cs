@@ -693,7 +693,7 @@ namespace TurtleWallet
                 var resp = ConnectionManager.Request("sendTransaction", args);
                 if (resp.Item1 == false)
                 {
-                    MessageBox.Show("Error occured on send:" + Environment.NewLine + resp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error occured on send:" + Environment.NewLine + resp.Item2, "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     windowLogger.Log(LogTextbox, "Error occured on send:" + Environment.NewLine + resp.Item2);
                     return;
                 }
@@ -704,7 +704,7 @@ namespace TurtleWallet
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error occured on send:" + Environment.NewLine + ex.Message, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error occured on send:" + Environment.NewLine + ex.Message, "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 windowLogger.Log(LogTextbox, "Error occured on send:" + Environment.NewLine + ex.Message);
             }
         }
@@ -849,7 +849,7 @@ namespace TurtleWallet
             var viewresp = ConnectionManager.Request("getViewKey", new Dictionary<string, object> { });
             if (viewresp.Item1 == false)
             {
-                MessageBox.Show("Error occured on getViewKey:" + Environment.NewLine + viewresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error occured on getViewKey:" + Environment.NewLine + viewresp.Item2, "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 windowLogger.Log(LogTextbox, "Error occured on getViewKey:" + Environment.NewLine + viewresp.Item2);
                 return;
             }
@@ -866,7 +866,7 @@ namespace TurtleWallet
 
             if (spendresp.Item1 == false)
             {
-                MessageBox.Show("Error occured on getSpendKeys:" + Environment.NewLine + spendresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error occured on getSpendKeys:" + Environment.NewLine + spendresp.Item2, "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 windowLogger.Log(LogTextbox, "Error occured on getSpendKeys:" + Environment.NewLine + spendresp.Item2);
                 return;
             }
@@ -906,7 +906,7 @@ namespace TurtleWallet
                 var saveresp = ConnectionManager.Request("save", new Dictionary<string, object> { });
                 if (saveresp.Item1 == false)
                 {
-                    MessageBox.Show("Error occured trying to save the wallet state:" + Environment.NewLine + saveresp.Item2, "TurleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error occured trying to save the wallet state:" + Environment.NewLine + saveresp.Item2, "TurtleCoin Wallet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch
