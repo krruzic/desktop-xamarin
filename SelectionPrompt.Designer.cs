@@ -32,11 +32,11 @@ namespace TurtleWallet
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.importWalletButton = new System.Windows.Forms.Label();
-            this.selectWalletButton = new System.Windows.Forms.Label();
+            this.importWalletButton = new TurtleWalletLabelButton();
+            this.selectWalletButton = new TurtleWalletLabelButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.createWalletButton = new System.Windows.Forms.Label();
+            this.createWalletButton = new TurtleWalletLabelButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -133,8 +133,6 @@ namespace TurtleWallet
             this.importWalletButton.Text = "Import Wallet";
             this.importWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.importWalletButton.Click += new System.EventHandler(this.ImportWalletButton_Click);
-            this.importWalletButton.MouseEnter += new System.EventHandler(this.ImportWalletButton_MouseEnter);
-            this.importWalletButton.MouseLeave += new System.EventHandler(this.ImportWalletButton_MouseLeave);
             // 
             // selectWalletButton
             // 
@@ -152,8 +150,6 @@ namespace TurtleWallet
             this.selectWalletButton.Text = "Select Existing Wallet";
             this.selectWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.selectWalletButton.Click += new System.EventHandler(this.SelectWalletButton_Click);
-            this.selectWalletButton.MouseEnter += new System.EventHandler(this.SelectWalletButton_MouseEnter);
-            this.selectWalletButton.MouseLeave += new System.EventHandler(this.SelectWalletButton_MouseLeave);
             // 
             // panel2
             // 
@@ -181,8 +177,6 @@ namespace TurtleWallet
             this.createWalletButton.Text = "Create Wallet";
             this.createWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.createWalletButton.Click += new System.EventHandler(this.CreateWalletButton_Click);
-            this.createWalletButton.MouseEnter += new System.EventHandler(this.CreateWalletButton_MouseEnter);
-            this.createWalletButton.MouseLeave += new System.EventHandler(this.CreateWalletButton_MouseLeave);
             // 
             // pictureBox1
             // 
@@ -208,7 +202,6 @@ namespace TurtleWallet
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SelectionPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TurtleCoin Wallet";
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -224,9 +217,9 @@ namespace TurtleWallet
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label selectWalletButton;
-        private System.Windows.Forms.Label createWalletButton;
-        private System.Windows.Forms.Label importWalletButton;
+        private TurtleWalletLabelButton selectWalletButton;
+        private TurtleWalletLabelButton createWalletButton;
+        private TurtleWalletLabelButton importWalletButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
     }

@@ -1,15 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TurtleWallet
@@ -19,7 +11,8 @@ namespace TurtleWallet
         public UpdatePrompt()
         {
             InitializeComponent();
-            this.Text = "Turtle Wallet";
+
+            this.Text = Application.ProductName;
         }
 
         private void UpdatePrompt_Load(object sender, EventArgs e)
@@ -32,7 +25,7 @@ namespace TurtleWallet
             Utilities.CloseProgram(e);
         }
 
-        void UpdateRequest()
+        private void UpdateRequest()
         {
             try
             {
@@ -50,17 +43,18 @@ namespace TurtleWallet
 
                 string gitVersionString = jobj["tag_name"].ToString();
                
-
                 var gitVersion = new Version(gitVersionString);
                 var thisVersion = new Version(thisVersionString);
 
                 var result = gitVersion.CompareTo(thisVersion);
                 if (result > 0)
+                {
                     needsUpdate = true;
-                else if (result < 0)
-                    needsUpdate = false;
+                }
                 else
+                {
                     needsUpdate = false;
+                }
 
                 if (needsUpdate)
                 {
@@ -108,7 +102,9 @@ namespace TurtleWallet
                 else if (System.AppDomain.CurrentDomain.FriendlyName == "TurtleWallet.exe")
                 {
                     if (System.IO.File.Exists("TurtleWallet_update.exe"))
+                    {
                         System.IO.File.Delete("TurtleWallet_update.exe");
+                    }
                 }
             }
             catch
