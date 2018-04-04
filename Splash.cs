@@ -1,30 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TurtleWallet
 {
     public partial class Splash : TurtleWalletForm
     {
-        public string WalletPath
-        {
-            get;
-            set;
-        }
+        public string WalletPath { get; set; }
 
-        public string WalletPassword
-        {
-            get;
-            set;
-        }
+        public string WalletPassword { get; set; }
 
         protected override CreateParams CreateParams
         {
@@ -43,7 +29,7 @@ namespace TurtleWallet
             WalletPath = _wallet;
             WalletPassword = _password;
             versionLabel.Text = "v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = "Turtle Wallet";
+            this.Text = Application.ProductName;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TurtleWallet
@@ -12,12 +7,13 @@ namespace TurtleWallet
     public abstract class LogBase
     {
         protected readonly object lockObj = new object();
+
         public abstract void Log(object obj, string message);
     }
 
     public class FileLogger : LogBase
     {
-        public string filePath = "trtl.log";
+        public readonly string filePath = "trtl.log";
 
         public override void Log(object obj, string message)
         {

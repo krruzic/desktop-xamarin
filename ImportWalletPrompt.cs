@@ -1,76 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TurtleWallet
 {
     public partial class ImportWalletPrompt : TurtleWalletForm
     {
-        public string ImportWalletPath
-        {
-            get;
-            set;
-        }
+        public string ImportWalletPath { get; set; }
 
-        public string ImportWalletPassword
-        {
-            get;
-            set;
-        }
+        public string ImportWalletPassword { get; set; }
 
         public ImportWalletPrompt()
         {
             InitializeComponent();
-            this.Text = "Turtle Wallet";
+            this.Text = Application.ProductName;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             Utilities.CloseProgram(e);
-        }
-
-        private void ImportWalletButton_MouseEnter(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(44, 44, 44);
-            var forcolor = Color.FromArgb(39, 170, 107);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void ImportWalletButton_MouseLeave(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(52, 52, 52);
-            var forcolor = Color.FromArgb(224, 224, 224);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void CancelButton_MouseEnter(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(44, 44, 44);
-            var forcolor = Color.FromArgb(39, 170, 107);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
-        }
-
-        private void CancelButton_MouseLeave(object sender, EventArgs e)
-        {
-            var backcolor = Color.FromArgb(52, 52, 52);
-            var forcolor = Color.FromArgb(224, 224, 224);
-            var currentButton = (Label)sender;
-            currentButton.BackColor = backcolor;
-            currentButton.ForeColor = forcolor;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

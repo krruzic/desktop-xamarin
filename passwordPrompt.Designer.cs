@@ -38,8 +38,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.buttonsTable = new System.Windows.Forms.TableLayoutPanel();
-            this.cancelButton = new System.Windows.Forms.Label();
-            this.createWalletButton = new System.Windows.Forms.Label();
+            this.cancelButton = new TurtleWalletLabelButton();
+            this.createWalletButton = new TurtleWalletLabelButton();
             this.passwordLogo = new System.Windows.Forms.PictureBox();
             this.createMainPanel.SuspendLayout();
             this.createMainTable.SuspendLayout();
@@ -207,8 +207,6 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            this.cancelButton.MouseEnter += new System.EventHandler(this.CancelButton_MouseEnter);
-            this.cancelButton.MouseLeave += new System.EventHandler(this.CancelButton_MouseLeave);
             // 
             // createWalletButton
             // 
@@ -226,8 +224,6 @@
             this.createWalletButton.Text = "Submit";
             this.createWalletButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.createWalletButton.Click += new System.EventHandler(this.CreateWalletButton_Click);
-            this.createWalletButton.MouseEnter += new System.EventHandler(this.CreateWalletButton_MouseEnter);
-            this.createWalletButton.MouseLeave += new System.EventHandler(this.CreateWalletButton_MouseLeave);
             // 
             // passwordLogo
             // 
@@ -253,7 +249,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "passwordPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TurtleCoin Wallet";
             this.createMainPanel.ResumeLayout(false);
             this.createMainTable.ResumeLayout(false);
             this.passwordConfirmTable.ResumeLayout(false);
@@ -275,8 +270,8 @@
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.TableLayoutPanel createMainTable;
         private System.Windows.Forms.Label walletPasswordLabel;
-        private System.Windows.Forms.Label cancelButton;
-        private System.Windows.Forms.Label createWalletButton;
+        private TurtleWalletLabelButton cancelButton;
+        private TurtleWalletLabelButton createWalletButton;
         private System.Windows.Forms.TableLayoutPanel buttonsTable;
         private System.Windows.Forms.TableLayoutPanel passwordConfirmTable;
         private System.Windows.Forms.Panel panel1;

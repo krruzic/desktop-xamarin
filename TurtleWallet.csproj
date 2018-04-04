@@ -96,6 +96,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TurtleWalletLabelButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="CommandLineEncoder.cs" />
     <Compile Include="CreateWalletKeyPrompt.cs">
